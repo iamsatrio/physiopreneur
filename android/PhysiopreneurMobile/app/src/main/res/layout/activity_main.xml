@@ -84,7 +84,20 @@
         android:orientation="vertical"
         android:gravity="bottom"
         android:layout_marginBottom="20dp">
-        <TextView
+        <!--<TextView-->
+            <!--android:id="@+id/lin"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@android:color/holo_blue_light"-->
+            <!--android:text="Login"-->
+            <!--android:textColor="@android:color/background_light"-->
+            <!--android:textStyle="bold"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_gravity="bottom"-->
+            <!--android:padding="16dp"-->
+            <!--android:layout_marginBottom="50dp"-->
+            <!--android:letterSpacing="0.2"/>-->
+        <Button
             android:id="@+id/lin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -97,16 +110,16 @@
             android:padding="16dp"
             android:layout_marginBottom="50dp"
             android:letterSpacing="0.2"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:layout_marginBottom="300dp"
-        android:weightSum="1">
-        <ImageView
-            android:layout_width="203dp"
-            android:src="@drawable/logo"
-            android:layout_height="212dp" />
-    </LinearLayout>
+</LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:layout_marginBottom="300dp"
+    android:weightSum="1">
+    <ImageView
+        android:layout_width="203dp"
+        android:src="@drawable/logo"
+        android:layout_height="212dp" />
+</LinearLayout>
 </RelativeLayout>
