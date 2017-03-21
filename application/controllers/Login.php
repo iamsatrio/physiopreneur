@@ -18,21 +18,21 @@ class Login extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	 
+
 	function __construct()
 	{
-		parent::__construct();	
+		parent::__construct();
 		$this->load->model('m_login');
 	}
-	
+
 	public function index()
 	{
 		//$this->load->view('welcome_message');
-		$this->load->helper('url');
+		//$this->load->helper('url');
 		$this->load->view('login.php');
 	}
-	
-	function action_login(){	
+
+	function action_login(){
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 		$cek = $this->m_login->cek_login($username,$password);
@@ -48,7 +48,7 @@ class Login extends CI_Controller {
 			$this->session->set_flashdata('pesan','Maaf, kombinasi username dan password salah');
 			redirect(base_url('index.php/login'));
 		}
-		
+
 		/*$username = $this->input->post('username');
 		$password = $this->input->post('password');
 		$where = array(
@@ -61,15 +61,15 @@ class Login extends CI_Controller {
 				'nama' => $username,
 				'status' => "login"
 			);
-			
+
 			$this->session->set_userdata($data_session);
 			redirect(base_url("admin"));
 		}else{
 			echo "Username atau password salah";
-		}*/		
+		}*/
 	}
-	
-	function action_logout(){		
+
+	function action_logout(){
 		$this->session->sess_destroy();
 		$session_data['status'] = 0;
 		redirect(base_url('index.php/login'));
