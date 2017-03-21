@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class TambahPegawai extends CI_Controller {
+class Manager extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -18,9 +18,21 @@ class TambahPegawai extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	function __construct()
+	{
+		parent::__construct();
+		if(!$this->session->userdata('username') && $this->session->userdata('status') == 0){
+			redirect(base_url());
+		}
+	}
+
 	public function index()
 	{
+		//$this->load->view('welcome_message');
 		$this->load->helper('url');
-		$this->load->view('manager/tambah-pegawai.php');
+		$this->load->view('manager/home.php');
 	}
+
+
 }

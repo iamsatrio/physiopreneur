@@ -40,10 +40,16 @@ class Login extends CI_Controller {
 			foreach($cek->result() as $data){
 				$session_data['id'] = $data->id;
 				$session_data['username'] = $data->username;
+				$session_data['role_id'] = $data->id_role;
 				$session_data['status'] = 1;
 				$this->session->set_userdata($session_data);
 			}
-			redirect(base_url('index.php/admin'));
+			if ($session_data['role_id']==1) {
+				redirect(base_url('index.php/manager'));
+			} else if ($session_data['role_id']==2) {
+				redirect(base_url('index.php/pegawai'));
+			}
+
 
 		}else{
 			$this->session->set_flashdata('pesan','Maaf, kombinasi username dan password salah');
@@ -73,6 +79,6 @@ class Login extends CI_Controller {
 	function action_logout(){
 		$this->session->sess_destroy();
 		$session_data['status'] = 0;
-		redirect(base_url('index.php/login'));
+		redirect(base_url());
 	}
 }

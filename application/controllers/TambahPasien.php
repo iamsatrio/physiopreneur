@@ -18,20 +18,20 @@ class TambahPasien extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	 
+
 	function __construct()
 	{
 		parent::__construct();
 		$this->load->model('m_pasien');
 	}
-	
+
 	public function index()
 	{
 		//$this->load->view('welcome_message');
 		$this->load->helper('url');
-		$this->load->view('tambah-pasien.php');
+		$this->load->view('pegawai/tambah-pasien.php');
 	}
-	
+
 	public function tambah_pasien(){
 		$tipePas = $this->input->post('tipe');
 		$idPasien = $this->input->post('idPasien');
@@ -50,10 +50,10 @@ class TambahPasien extends CI_Controller {
 		$this->m_pasien->tambah_data($data,'tb_pasien');
 		redirect(base_url('index.php/tambahpasien/rekam_medik'));
 	}
-	
+
 	public function rekam_medik(){
 		$data['hasil'] = $this->m_pasien->tampil_data('1');
 		$this->load->view('rekam-medik.php',$data);
 	}
-	
+
 }

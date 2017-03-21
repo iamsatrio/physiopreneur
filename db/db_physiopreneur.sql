@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 21 Mar 2017 pada 18.01
+-- Generation Time: 21 Mar 2017 pada 20.02
 -- Versi Server: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -146,6 +146,7 @@ CREATE TABLE `tb_pegawai` (
   `no_hp` varchar(12) NOT NULL,
   `alamat` text NOT NULL,
   `id_lokasi` int(11) NOT NULL,
+  `foto` blob NOT NULL,
   `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -250,7 +251,8 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id`, `username`, `password`, `id_role`) VALUES
-(1, 'satrio', 'wibowo', 2);
+(1, 'satrio', 'wibowo', 2),
+(2, 'teguh', 'piganta', 1);
 
 -- --------------------------------------------------------
 
@@ -442,7 +444,7 @@ ALTER TABLE `tb_tindakan`
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tb_user_role`
 --
