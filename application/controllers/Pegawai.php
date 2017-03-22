@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+(defined('BASEPATH') OR exit('No direct script access allowed'));
 
 class Pegawai extends CI_Controller {
 
@@ -33,6 +33,5 @@ class Pegawai extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->view('pegawai/home.php');
 	}
-
 
 }
