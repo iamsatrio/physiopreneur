@@ -2,10 +2,6 @@
 
 class M_Pasien extends CI_Model{
 	
-	/*function cek_login($table,$where){
-		return $this->db->get_where($table,$where);
-	}*/
-	
 	function tambah_data($data,$table){
 		$this->db->insert($table,$data);
 	}
@@ -19,6 +15,12 @@ class M_Pasien extends CI_Model{
             }
             return $hasil;
         }
+	}
+
+	function tampil_pasien()
+	{
+		$this->db->from('tb_pasien');
+		return $this->db->get();	
 	}
 	
 }

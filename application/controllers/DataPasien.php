@@ -1,9 +1,9 @@
 <?php
-(defined('BASEPATH') OR exit('No direct script access allowed'));
+(defined('BASEPATH') OR exit ('No direct script access allowed'));
 
-class Manager extends CI_Controller {
+class DataPasien extends CI_Controller {
 
-	/**
+    	/**
 	 * Index Page for this controller.
 	 *
 	 * Maps to the following URL
@@ -19,20 +19,16 @@ class Manager extends CI_Controller {
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
 
-	function __construct()
-	{
-		parent::__construct();
-		if(!$this->session->userdata('username') && $this->session->userdata('status') == 0){
-			redirect(base_url());
-		}
-	}
-
-	public function index()
-	{
-		//$this->load->view('welcome_message');
-		$this->load->helper('url');
-		$this->load->view('manager/home.php');
-	}
-
-
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->model('m_pasien');
+    }
+    public function index()
+    {
+        $dataPasien['listPasien'] = $this->m_pasien->tampil_pasien(); //ambil data pasien yang di simpan didalam listPasien
+        $this->load->helper('url');
+        $this->load->view('pegawai/data-pasien.php',$dataPasien);
+    }
 }
+?>

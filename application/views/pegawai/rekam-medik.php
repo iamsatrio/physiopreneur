@@ -29,10 +29,10 @@
 
         <div class="span4">
           <div class="span4"></div>
-		  <?php foreach($hasil as $data): ?>
-              <label class="control-label">ID Pasien &nbsp; : &nbsp; <?php echo $data->id; ?></label>
-              <label class="control-label">Nama Pasien &nbsp; : &nbsp; <?php echo $data->nama_pasien; ?></label>
-			<?php endforeach; ?>
+          <?php foreach ($listRekam as $data){ ?>
+              <label class="control-label">ID Pasien &nbsp; : &nbsp;<?php echo $this->$data->id; ?> </label>
+              <label class="control-label">Nama Pasien &nbsp; : &nbsp; </label>
+          <?php }?>
         </div>
 
         <div class="span4">  </div>
