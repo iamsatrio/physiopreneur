@@ -29,9 +29,9 @@
 
         <div class="span4">
           <div class="span4"></div>
-          <?php foreach ($listRekam as $data){ ?>
-              <label class="control-label">ID Pasien &nbsp; : &nbsp;<?php echo $this->$data->id; ?> </label>
-              <label class="control-label">Nama Pasien &nbsp; : &nbsp; </label>
+          <?php foreach ($rekamMedik->result() as $data){ ?>
+              <label class="control-label">ID Pasien &nbsp; : &nbsp;<?= $data->id; ?> </label>
+              <label class="control-label">Nama Pasien &nbsp; : &nbsp;<?= $data->nama_pasien; ?> </label>
           <?php }?>
         </div>
 
@@ -63,24 +63,14 @@
                 </tr>
               </thead>
               <tbody>
+                <?php foreach ($medik->result() as $data){ ?>
                 <tr>
-                  <td>2 Maret 2017</td>
-                  <td>Sakit Pinggang</td>
-                  <td>Tens/ES</td>
-                  <td class="center">Zona</td>
+                  <td><?= $data->tanggal  ?></td>
+                  <td><?= $data->diagnosa  ?></td>
+                  <td><?= $data->tindakan  ?></td>
+                  <td class="center"><?= $data->nama  ?></td>
                 </tr>
-                <tr>
-                  <td>10 Maret 2017</td>
-                  <td></td>
-                  <td>Functional Exercise</td>
-                  <td class="center">Zona</td>
-                </tr>
-                <tr>
-                  <td>15 Maret 2017</td>
-                  <td></td>
-                  <td>Functional Exercise, Infrared</td>
-                  <td class="center">Zona</td>
-                </tr>
+                <?php } ?>
 
               </tbody>
             </table>

@@ -52,7 +52,8 @@ class TambahPasien extends CI_Controller {
 	}
 
 	public function rekam_medik(){
-		$data['hasil'] = $this->m_pasien->tampil_data('1');
+		$idMax = $this->m_pasien->max_id();
+		$data['hasil'] = $this->m_pasien->tampil_data($idMax);
 		$this->load->view('rekam-medik.php',$data);
 	}
 

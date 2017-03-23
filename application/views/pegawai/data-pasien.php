@@ -26,7 +26,6 @@
   <?php
     $jumlahPasien = $listPasien->num_rows();
     if($jumlahPasien ==0 ){
-
   ?>
   <!--Kalau kosong, kita harus melakukan add pasien-->
   <a href="<?= base_url() ?> index.php/pegawai/tambahpasien">Tambah Pasien</a>
@@ -57,7 +56,7 @@
                   <tbody>
                 <?php
                   //Kita akan melakukan looping sesuai dengan data yg dimiliki
-                  $nomor = 0; //untuk pengisian nomor
+                  $nomor = 1; //untuk pengisian nomor
                   foreach ($listPasien->result() as $row){
                 ?>
                   <tr>
@@ -68,7 +67,7 @@
                     <td>
                       <center>
                         <!--akan masuk ke rekam medik-->
-                        <a href="<?php echo base_url() ?>index.php/rekammedik">
+                        <a href="<?php echo base_url() ?>index.php/rekammedik/tampilPasien/<?= $row->id?>">
                           <button class="btn btn-primary"><i class="icon icon-search"></i> Details</button>
                         </a>
                       </center>
@@ -85,8 +84,8 @@
     </div>
   </div>
 </div>
-       <?php         
-        }  
+       <?php
+        }
       ?>
 
 <!--Footer-part-->
