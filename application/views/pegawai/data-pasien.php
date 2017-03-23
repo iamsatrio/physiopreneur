@@ -4,7 +4,14 @@
 <title>Data Pasien - Physiopreneur</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-</head>
+<link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
+<link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" href="<?php echo base_url() ?>css/uniform.css" />
+<link rel="stylesheet" href="<?php echo base_url() ?>css/select2.css" />
+<link rel="stylesheet" href="<?php echo base_url() ?>css/matrix-style.css" />
+<link rel="stylesheet" href="<?php echo base_url() ?>css/matrix-media.css" />
+<link href="<?php echo base_url() ?>font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'></head>
 <body>
 
   <!--Header-part-->
@@ -49,7 +56,7 @@
                       <th>No.</th>
                       <th>Nama</th>
                       <th>Alamat</th>
-                      <th>ID Pasien</th>
+                      <th>No HP/th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -60,10 +67,10 @@
                   foreach ($listPasien->result() as $row){
                 ?>
                   <tr>
-                    <td><center><?= $nomor ?></center></td>
+                    <td><center><?= $nomor++ ?></center></td>
                     <td><?= $row->nama_pasien ?></td>
                     <td><?= $row->alamat ?></td>
-                    <td><?= $row->id?></td>
+                    <td><?= $row->no_hp?></td>
                     <td>
                       <center>
                         <!--akan masuk ke rekam medik-->
@@ -92,5 +99,14 @@
 <div class="row-fluid">
   <div id="footer" class="span12"> 2013 &copy; Matrix Admin. Brought to you by <a href="http://themedesigner.in">Themedesigner.in</a> </div>
 </div>
+<!--end-Footer-part-->
+<script src="<?php echo base_url() ?>js/jquery.min.js"></script>
+<script src="<?php echo base_url() ?>js/jquery.ui.custom.js"></script>
+<script src="<?php echo base_url() ?>js/bootstrap.min.js"></script>
+<script src="<?php echo base_url() ?>js/jquery.uniform.js"></script>
+<script src="<?php echo base_url() ?>js/select2.min.js"></script>
+<script src="<?php echo base_url() ?>js/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url() ?>js/matrix.js"></script>
+<script src="<?php echo base_url() ?>js/matrix.tables.js"></script>
 </body>
 </html>

@@ -26,6 +26,7 @@ class M_Pasien extends CI_Model{
 		$this->db->from('tb_pasien');
 		return $this->db->get();
 	}
+
 }
 
 ?>
