@@ -44,7 +44,7 @@ class Login extends CI_Controller {
 				$session_data['status'] = 1;
 				$this->session->set_userdata($session_data);
 			}
-			
+
 			if ($session_data['role_id']==1) {
 				redirect(base_url('index.php/manager'));
 			} else if ($session_data['role_id']==2) {
@@ -52,9 +52,9 @@ class Login extends CI_Controller {
 			}
 
 		}else{
-			// $message = "Maaf, kombinasi username dan password salah";
-			// echo "<script type='text/javascript'>alert('$message');</script>";
-			$this->session->set_flashdata("message","Maaf, Kombinasi username dan password salah");
+			$message = "Maaf, kombinasi username dan password salah";
+			echo "<script type='text/javascript'>alert('$message');</script>";
+			//$this->session->set_flashdata("message","Maaf, Kombinasi username dan password salah");
 			redirect('index.php', 'refresh');
 		}
 

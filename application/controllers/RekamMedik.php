@@ -10,9 +10,19 @@ class RekamMedik extends CI_Controller {
 
     public function index()
     {
-        $rekamMedik['listRekam'] = $this->m_rekam->tampil_rekam();
+
         $this->load->helper('url');
         $this->load->view('pegawai/rekam-medik.php', $rekamMedik);
+    }
+
+    public function tampilPasien($id){
+      $rekamMedik = $this->m_rekam->tampil_id_pasien($id);
+      $medik = $this->m_rekam->tampil_rekam($id);
+       $this->load->view('pegawai/rekam-medik.php', array(
+         'rekamMedik' => $rekamMedik,
+         'medik' => $medik
+       ));
+      //$this->load->view('pegawai/rekam-medik.php',$medik);
     }
 
 }

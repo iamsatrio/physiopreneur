@@ -1,7 +1,7 @@
 <?php
 (defined('BASEPATH') OR exit ('No direct script access allowed'));
 
-class DataPasien extends CI_Controller {
+class DataPegawai extends CI_Controller {
 
 	/**
 
@@ -23,13 +23,13 @@ class DataPasien extends CI_Controller {
     function __construct()
     {
         parent::__construct();
-        $this->load->model('m_pasien');
+        $this->load->model('m_pegawai');
     }
     public function index()
     {
-        $dataPasien['listPasien'] = $this->m_pasien->tampil_pasien(); //ambil data pasien yang di simpan didalam listPasien
+        $dataPegawai['listPegawai'] = $this->m_pegawai->tampil_pegawai(); //ambil data pasien yang di simpan didalam listPasien
         $this->load->helper('url');
-        $this->load->view('pegawai/data-pasien.php',$dataPasien);
+        $this->load->view('manager/data-pegawai.php',$dataPegawai);
     }
 }
 ?>
