@@ -40,13 +40,13 @@
           <?php foreach ($rekamMedik->result() as $data){ ?>
               <label class="control-label">ID Pasien &nbsp; : &nbsp;<?= $data->id; ?> </label>
               <label class="control-label">Nama Pasien &nbsp; : &nbsp;<?= $data->nama_pasien; ?> </label>
-          <?php }?>
+          
         </div>
 
         <div class="span4">  </div>
 
         <div class="span4">
-          <img src="img/patient.png" alt="" style="width:100px; height:100px;">
+          <img src="<?php echo base_url() ?>asset/foto_pasien/<?=$data->foto?>" alt="<?=$data->foto?>" style="width:100px; height:100px;"/>
         </div>
         <div class="span4"></div>
         <div class="span4">
@@ -58,7 +58,8 @@
 
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-            <h5>Rekam Medik - Satrio</h5>
+            <h5>Rekam Medik - <?= $data->nama_pasien; ?></h5>
+			<?php }?>
           </div>
           <div class="widget-content nopadding">
             <table class="table table-bordered data-table">
@@ -71,14 +72,17 @@
                 </tr>
               </thead>
               <tbody>
-                <?php foreach ($medik->result() as $data){ ?>
+                <?php 
+				$jumlahRekamMedik = $medik->num_rows();
+				if ($jumlahRekamMedik > 0) {
+				foreach ($medik->result() as $data){ ?>
                 <tr>
                   <td><?= $data->tanggal  ?></td>
                   <td><?= $data->diagnosa  ?></td>
                   <td><?= $data->tindakan  ?></td>
                   <td class="center"><?= $data->nama  ?></td>
                 </tr>
-                <?php } ?>
+                <?php }} ?>
 
               </tbody>
             </table>

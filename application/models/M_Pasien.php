@@ -26,6 +26,14 @@ class M_Pasien extends CI_Model{
 		$this->db->from('tb_pasien');
 		return $this->db->get();
 	}
+	
+	function max_id(){
+		//$this->db->select_max('id');
+		//return $this->db->get('tb_pasien');
+		$this->db->select_max('id');
+		$result = $this->db->get('tb_pasien')->row();
+		return $result->id;
+	}
 
 }
 
