@@ -58,8 +58,8 @@
 			  <div class="control-group">
                 <label class="control-label">Tipe Pasien :</label>
                 <div class="controls">
-                  <select class="span11" name="tipe" required>
-					<option value="#">---Pilih---</option>
+                  <select required class="span11" name="tipe">
+					<option value="">---Pilih---</option>
 					<option value="1">Pelajar</option>
 					<option value="2">Umum</option>
 				  </select>
@@ -68,7 +68,7 @@
               <div class="control-group">
                 <label class="control-label">Kode Pasien :</label>
                 <div class="controls">
-                  <input type="text" class="span11" disabled="" value="12345" name="kdPasien"/>
+                  <input type="text" class="span11" name="kdPasien" value="12345" readonly/>
                 </div>
               </div>
               <div class="control-group">
