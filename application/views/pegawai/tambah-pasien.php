@@ -66,9 +66,9 @@
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">ID Pasien :</label>
+                <label class="control-label">Kode Pasien :</label>
                 <div class="controls">
-                  <input type="text" class="span11" disabled="" value="12345" name="idPasien"/>
+                  <input type="text" class="span11" disabled="" value="12345" name="kdPasien"/>
                 </div>
               </div>
               <div class="control-group">

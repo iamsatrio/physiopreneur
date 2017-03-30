@@ -26,6 +26,29 @@ class M_Rekam extends CI_Model{
     function tambah_rekam($data,$table){
 		$this->db->insert($table,$data);
 	}
+	
+	function get_nama_pasien($id){
+		$this->db->select('nama_pasien');
+		$this->db->from('tb_pasien');
+		$this->db->where('id',$id);
+		$result = $this->db->get();
+		if($result->num_rows() > 0){
+			return $result->result();
+		}		
+	}
+	
+	function get_id(){
+		$this->db->select_max('id');
+		$result = $this->db->get('tb_rekam_medik')->row();
+		return $result->id;
+	}
+	
+	function get_idTindakan($nama_tindakan){
+		$this->db->select('id');
+		$this->db->where('tindakan',$nama_tindakan);
+		$result = $this->db->get('tb_tindakan')->row();
+		return $result->id;
+	}
 
 	// function tampil_rekamdata($idPasien){
 	// 	$this->db->where('id', $idPasien);

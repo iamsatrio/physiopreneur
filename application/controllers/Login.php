@@ -78,9 +78,10 @@ class Login extends CI_Controller {
 		}*/
 	}
 
-	function action_logout(){
-		$this->session->sess_destroy();
+	function action_logout(){		
 		$session_data['status'] = 0;
+		$this->session->set_userdata($session_data);
+		$this->session->sess_destroy();
 		redirect(base_url());
 	}
 }
