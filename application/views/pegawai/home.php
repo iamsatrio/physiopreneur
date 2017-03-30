@@ -4,14 +4,6 @@
 <title>Physiopreneur</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="<?php echo base_url()?>css/bootstrap.min.css" />
-<link rel="stylesheet" href="<?php echo base_url()?>css/bootstrap-responsive.min.css" />
-<link rel="stylesheet" href="<?php echo base_url()?>css/fullcalendar.css" />
-<link rel="stylesheet" href="<?php echo base_url()?>css/matrix-style.css" />
-<link rel="stylesheet" href="<?php echo base_url()?>css/matrix-media.css" />
-<link href="<?php echo base_url()?>font-awesome/css/font-awesome.css" rel="stylesheet" />
-<link rel="stylesheet" href="<?php echo base_url()?>css/jquery.gritter.css" />
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 <body>
 
 <?php include 'header.php';?>

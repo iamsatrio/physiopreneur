@@ -4,14 +4,6 @@
 <title>Rekam Medik - Physiopreneur</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
-<link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap-responsive.min.css" />
-<link rel="stylesheet" href="<?php echo base_url() ?>css/uniform.css" />
-<link rel="stylesheet" href="<?php echo base_url() ?>css/select2.css" />
-<link rel="stylesheet" href="<?php echo base_url() ?>css/matrix-style.css" />
-<link rel="stylesheet" href="<?php echo base_url() ?>css/matrix-media.css" />
-<link href="<?php echo base_url() ?>font-awesome/css/font-awesome.css" rel="stylesheet" />
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
@@ -40,29 +32,25 @@
           <?php foreach ($rekamMedik->result() as $data){ ?>
               <label class="control-label">ID Pasien &nbsp; : &nbsp;<?= $data->id; ?> </label>
               <label class="control-label">Nama Pasien &nbsp; : &nbsp;<?= $data->nama_pasien; ?> </label>
-          
         </div>
 
         <div class="span4">  </div>
 
         <div class="span4">
-          <img src="<?php echo base_url() ?>asset/foto_pasien/<?=$data->foto?>" alt="<?=$data->foto?>" style="width:100px; height:100px;"/>
+        <img src="<?php echo base_url() ?>asset/foto_pasien/<?=$data->foto?>" alt="<?=$data->foto?>" style="width:100px; height:100px;"/>
         </div>
         <div class="span4"></div>
         <div class="span4">
           <div class="span3"></div>
             <a href="<?php echo base_url() ?>index.php/tambahrekammedik">
-              <button class="btn btn-info"><i class="icon icon-plus"></i> Rekam Medik</button>
+              <button class="btn btn-info"><i class="icon icon-plus"></i>Rekam Medik</button>
             </a>
         </div>
 
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
             <h5>Rekam Medik - <?= $data->nama_pasien; ?></h5>
-			<?php 
-				$session_data['idPasienTambahRekam'] = $data->id;
-				$this->session->set_userdata($session_data);
-			}?>
+        <?php }?>
           </div>
           <div class="widget-content nopadding">
             <table class="table table-bordered data-table">
@@ -76,9 +64,9 @@
               </thead>
               <tbody>
                 <?php 
-				$jumlahRekamMedik = $medik->num_rows();
-				if ($jumlahRekamMedik > 0) {
-				foreach ($medik->result() as $data){ ?>
+                  $jumlahRekamMedik = $medik->num_rows();
+                  if ($jumlahRekamMedik > 0) {
+                  foreach ($medik->result() as $data){ ?>
                 <tr>
                   <td><?= $data->tanggal  ?></td>
                   <td><?= $data->diagnosa  ?></td>
@@ -99,13 +87,5 @@
 <div class="row-fluid">
   <div id="footer" class="span12"> 2013 &copy; Matrix Admin. Brought to you by <a href="http://themedesigner.in">Themedesigner.in</a> </div>
 </div>
-<script src="<?php echo base_url() ?>js/jquery.min.js"></script>
-<script src="<?php echo base_url() ?>js/jquery.ui.custom.js"></script>
-<script src="<?php echo base_url() ?>js/bootstrap.min.js"></script>
-<script src="<?php echo base_url() ?>js/jquery.uniform.js"></script>
-<script src="<?php echo base_url() ?>js/select2.min.js"></script>
-<script src="<?php echo base_url() ?>js/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url() ?>js/matrix.js"></script>
-<script src="<?php echo base_url() ?>js/matrix.tables.js"></script>
 </body>
 </html>

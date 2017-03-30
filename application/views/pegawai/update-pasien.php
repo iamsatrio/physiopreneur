@@ -12,33 +12,12 @@
 <?php include 'header.php';?>
 
 <?php include 'navbar.php';?>
-<!--sidebar-menu-->
 
-<!--main-container-part
-<div id="content">
-<!--breadcrumbs
-  <div id="content-header">
-    <div id="breadcrumb"></div>
-  </div>
-<!--End-breadcrumbs-->
-
-<!--close-top-Header-menu-->
-<!--start-top-serch-->
-
-<!--close-top-serch-->
-<!--sidebar-menu-->
-<!--<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
-  <ul>
-    <li><a href="index.html"><i class="icon icon-plus-sign"></i> <span>Pendaftaran</span></a> </li>
-    <li><a href="data-pasien.html"><i class="icon icon-book"></i> <span>Data Pasien</span></a> </li>
-    <li><a href="pembayaran.html"><i class="icon icon-book"></i> <span>Pembayaran</span></a> </li>
-  </ul>
-</div>-->
 <!--main-container-part-->
 <div id="content">
   <div id="content-header">
     <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Pendaftaran Pasien</a> </div>
-    <h1>Pendaftaran Pasien</h1>
+    <h1>Update Pasien</h1>
   </div>
   <div class="container-fluid">
     <hr>
@@ -49,7 +28,7 @@
             <h5>Data Diri Pasien</h5>
           </div>
           <div class="widget-content nopadding">
-            <form action="<?php echo base_url('index.php/tambahpasien/tambah_pasien') ?>" method="post" enctype="multipart/form-data" class="form-horizontal"	>
+            <form action="<?php echo base_url('index.php/tambahpasien/tambah_pasien') ?>" method="post" class="form-horizontal">
 			  <div class="control-group">
                 <label class="control-label">Tipe Pasien :</label>
                 <div class="controls">
@@ -93,12 +72,11 @@
               <div class="control-group">
                 <label class="control-label">Foto :</label>
                 <div class="controls">
-                 <input type="file" class="span11" name="fotoPasien" required />
+                  <input type="file" class="span11" />
                 </div>
               </div>
               <div class="form-actions">
-                <input type="submit" class="btn btn-success" value="Simpan"/>
-                <!--<button class="btn btn-success">Simpan</button>-->
+                <button class="btn btn-success">Update</button>
               </div>
             </form>
           </div>

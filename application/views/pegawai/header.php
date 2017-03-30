@@ -1,17 +1,13 @@
 <!-- CSS part -->
-<!-- <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
+<link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
 <link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap-responsive.min.css" />
 <link rel="stylesheet" href="<?php echo base_url() ?>css/uniform.css" />
 <link rel="stylesheet" href="<?php echo base_url() ?>css/select2.css" />
 <link rel="stylesheet" href="<?php echo base_url() ?>css/matrix-style.css" />
 <link rel="stylesheet" href="<?php echo base_url() ?>css/matrix-media.css" />
 <link href="<?php echo base_url() ?>font-awesome/css/font-awesome.css" rel="stylesheet" />
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'> -->
-<?php 
-	if(!$this->session->userdata('username') && $this->session->userdata('status') == 0){
-			redirect(base_url());
-	}
-?>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
 <!--Header-part-->
 <div id="header">
   <img src="<?php echo base_url() ?>img/logo-orang.png" alt="" style="height:70px; width:70px; margin-left:5%;">
@@ -34,7 +30,7 @@
 <!--close-top-Header-menu-->
 
 <!-- JS part -->
-<!-- <script src="<?php echo base_url() ?>js/excanvas.min.js"></script>
+<script src="<?php echo base_url() ?>js/excanvas.min.js"></script>
 <script src="<?php echo base_url() ?>js/jquery.min.js"></script>
 <script src="<?php echo base_url() ?>js/jquery.ui.custom.js"></script>
 <script src="<?php echo base_url() ?>js/bootstrap.min.js"></script>
@@ -54,4 +50,4 @@
 <script src="<?php echo base_url() ?>js/select2.min.js"></script>
 <script src="<?php echo base_url() ?>js/matrix.popover.js"></script>
 <script src="<?php echo base_url() ?>js/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url() ?>js/matrix.tables.js"></script> -->
+<script src="<?php echo base_url() ?>js/matrix.tables.js"></script>

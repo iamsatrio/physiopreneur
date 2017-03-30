@@ -6,12 +6,14 @@ class M_Pegawai extends CI_Model{
 		return $this->db->get_where($table,$where);
 	}*/
 
-	function tambah_data($data,$table){
+	function tambah_pegawai($data,$table)
+	{
 		$this->db->insert($table,$data);
 	}
 
-	function tampil_data($idPasien){
-		$this->db->where('id', $idPasien);
+	function tampil_data($id)
+	{
+		$this->db->where('id', $idPegawai);
 		$ambildata = $this->db->get('tb_pegawai');
 		if ($ambildata->num_rows() > 0 ) {
             foreach ($ambildata->result() as $data) {

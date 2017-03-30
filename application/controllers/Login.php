@@ -27,8 +27,7 @@ class Login extends CI_Controller {
 
 	public function index()
 	{
-		//$this->load->view('welcome_message');
-		//$this->load->helper('url');
+		$this->load->helper('url');
 		$this->load->view('login.php');
 	}
 
@@ -44,7 +43,7 @@ class Login extends CI_Controller {
 				$session_data['status'] = 1;
 				$this->session->set_userdata($session_data);
 			}
-
+			
 			if ($session_data['role_id']==1) {
 				redirect(base_url('index.php/manager'));
 			} else if ($session_data['role_id']==2) {
@@ -52,36 +51,15 @@ class Login extends CI_Controller {
 			}
 
 		}else{
-			$message = "Maaf, kombinasi username dan password salah";
-			echo "<script type='text/javascript'>alert('$message');</script>";
-			//$this->session->set_flashdata("message","Maaf, Kombinasi username dan password salah");
+			 $message = "Maaf, kombinasi username dan password salah";
+			 echo "<script type='text/javascript'>alert('$message');</script>";
 			redirect('index.php', 'refresh');
 		}
-
-		/*$username = $this->input->post('username');
-		$password = $this->input->post('password');
-		$where = array(
-			'username' => $username,
-			'password' => $password
-		);
-		$cek = $this->m_login->cek_login("tb_user",$where)->num_rows();
-		if($cek > 0){
-			$data_session = array(
-				'nama' => $username,
-				'status' => "login"
-			);
-
-			$this->session->set_userdata($data_session);
-			redirect(base_url("admin"));
-		}else{
-			echo "Username atau password salah";
-		}*/
 	}
 
-	function action_logout(){		
-		$session_data['status'] = 0;
-		$this->session->set_userdata($session_data);
+	function action_logout(){
 		$this->session->sess_destroy();
+		$session_data['status'] = 0;
 		redirect(base_url());
 	}
 }

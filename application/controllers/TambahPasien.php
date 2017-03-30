@@ -29,19 +29,19 @@ class TambahPasien extends CI_Controller {
 	public function index()
 	{
 		//$this->load->view('welcome_message');
-		$this->load->helper('url');		
+		$this->load->helper('url');
 		$this->load->view('pegawai/tambah-pasien.php');
 	}
-	
+
 	public function tambah_pasien(){		
 		$this->load->library('upload');
 		$tipePas = $this->input->post('tipe');
-		$kdPasien = $this->input->post('kdPasien');
+		$idPasien = $this->input->post('idPasien');
 		$namaPasien = $this->input->post('namaPasien');
 		$tglLahir = $this->input->post('tglLahir');
 		$alamat = $this->input->post('alamat');
 		$noHP = $this->input->post('noHP');
-		$namaFile = $kdPasien."_".$namaPasien;
+		$namaFile = $namaPasien+$noHP;
 		$config['upload_path'] = './asset/foto_pasien/';
 		$config['allowed_types'] = 'jpg|png|jpeg';
 		$config['max_size'] = '2048'; //maksimum besar file 2M
@@ -54,7 +54,7 @@ class TambahPasien extends CI_Controller {
 		if($this->upload->do_upload('fotoPasien')){
 			$gbr = $this->upload->data();			
 			$data = array(
-				'kode_pasien' => $kdPasien,
+				'id' => $idPasien,
 				'id_jenis_pasien' => $tipePas,
 				'nama_pasien' => $namaPasien,
 				'tanggal_lahir' => $tglLahir,
@@ -62,36 +62,17 @@ class TambahPasien extends CI_Controller {
 				'alamat' => $alamat,
 				'foto' => $gbr['file_name']
 			);
-			$this->m_pasien->tambah_data($data,'tb_pasien');
+			$this->m_pasien->tambah_pasien($data,'tb_pasien');
 			redirect(base_url('index.php/tambahpasien/rekam_medik'), 'refresh');
-		}else{			
-			//echo "<script type='text/javascript'>alert('Upload Failed!!');</script>";			
-			//redirect(base_url('index.php/tambahpasien'), 'refresh');
+		}else{
 			$error = array('error' => $this->upload->display_errors());
 			echo $error['error'];
 		}	
 	}
 	
-	/*public function tambah_pasien(){
-		$tipePas = $this->input->post('tipe');
-		$idPasien = $this->input->post('idPasien');
-		$namaPasien = $this->input->post('namaPasien');
-		$tglLahir = $this->input->post('tglLahir');
-		$alamat = $this->input->post('alamat');
-		$noHP = $this->input->post('noHP');
-		$data = array(
-			'id' => $idPasien,
-			'id_jenis_pasien'  => $tipePas,
-			'nama_pasien' => $namaPasien,
-			'tanggal_lahir' => $tglLahir,
-			'no_hp' => $noHP,
-			'alamat' => $alamat
-		);
-		$this->m_pasien->tambah_data($data,'tb_pasien');
-		redirect(base_url('index.php/tambahpasien/rekam_medik'));
-	}*/
-		
-	public function rekam_medik(){
+
+	public function rekam_medik()
+	{
 		$idMax = $this->m_pasien->max_id();
 		$rekamMedik = $this->m_rekam->tampil_id_pasien($idMax);
 		$medik = $this->m_rekam->tampil_rekam($idMax);

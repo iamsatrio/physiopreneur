@@ -4,14 +4,7 @@
 <title>Data Pasien - Physiopreneur</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap.min.css" />
-<link rel="stylesheet" href="<?php echo base_url() ?>css/bootstrap-responsive.min.css" />
-<link rel="stylesheet" href="<?php echo base_url() ?>css/uniform.css" />
-<link rel="stylesheet" href="<?php echo base_url() ?>css/select2.css" />
-<link rel="stylesheet" href="<?php echo base_url() ?>css/matrix-style.css" />
-<link rel="stylesheet" href="<?php echo base_url() ?>css/matrix-media.css" />
-<link href="<?php echo base_url() ?>font-awesome/css/font-awesome.css" rel="stylesheet" />
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'></head>
+</head>
 <body>
 
   <!--Header-part-->
@@ -56,7 +49,7 @@
                       <th>No.</th>
                       <th>Nama</th>
                       <th>Alamat</th>
-                      <th>No HP</th>
+                      <th>No.HP</th>
                       <th>Action</th>
                     </tr>
                   </thead>
@@ -70,12 +63,16 @@
                     <td><center><?= $nomor++ ?></center></td>
                     <td><?= $row->nama_pasien ?></td>
                     <td><?= $row->alamat ?></td>
-                    <td><?= $row->no_hp?></td>
+                    <td><?= $row->no_hp ?></td>
                     <td>
                       <center>
                         <!--akan masuk ke rekam medik-->
                         <a href="<?php echo base_url() ?>index.php/rekammedik/tampilPasien/<?= $row->id?>">
                           <button class="btn btn-primary"><i class="icon icon-search"></i> Details</button>
+                        </a>
+                        <!--lanjutkan lagi ya-->
+                        <a href="<?php echo base_url() ?>index.php/updatePasien/">
+                          <button class="btn btn-primary"><i class="icon icon-refresh"></i> Update</button>
                         </a>
                       </center>
                     </td>
