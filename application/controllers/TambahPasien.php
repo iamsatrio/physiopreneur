@@ -33,7 +33,7 @@ class TambahPasien extends CI_Controller {
 		$this->load->view('pegawai/tambah-pasien.php');
 	}
 
-	public function tambah_pasien(){		
+	public function tambah_pasien(){
 		$this->load->library('upload');
 		$tipePas = $this->input->post('tipe');
 		$idPasien = $this->input->post('idPasien');
@@ -48,11 +48,11 @@ class TambahPasien extends CI_Controller {
         $config['max_width']  = '1288'; //lebar maksimum 1288 px
         $config['max_height']  = '1288'; //tinggi maksimu 1288 px
         $config['file_name'] = $namaFile; //nama yang terupload nantinya
-					
+
 		$this->upload->initialize($config);
-							
+
 		if($this->upload->do_upload('fotoPasien')){
-			$gbr = $this->upload->data();			
+			$gbr = $this->upload->data();
 			$data = array(
 				'id' => $idPasien,
 				'id_jenis_pasien' => $tipePas,
@@ -65,14 +65,35 @@ class TambahPasien extends CI_Controller {
 			$this->m_pasien->tambah_pasien($data,'tb_pasien');
 			redirect(base_url('index.php/tambahpasien/rekam_medik'), 'refresh');
 		}else{
+			//echo "<script type='text/javascript'>alert('Upload Failed!!');</script>";
+			//redirect(base_url('index.php/tambahpasien'), 'refresh');
+
 			$error = array('error' => $this->upload->display_errors());
 			echo $error['error'];
-		}	
+		}
 	}
-	
 
-	public function rekam_medik()
-	{
+
+	/*public function tambah_pasien(){
+		$tipePas = $this->input->post('tipe');
+		$idPasien = $this->input->post('idPasien');
+		$namaPasien = $this->input->post('namaPasien');
+		$tglLahir = $this->input->post('tglLahir');
+		$alamat = $this->input->post('alamat');
+		$noHP = $this->input->post('noHP');
+		$data = array(
+			'id' => $idPasien,
+			'id_jenis_pasien'  => $tipePas,
+			'nama_pasien' => $namaPasien,
+			'tanggal_lahir' => $tglLahir,
+			'no_hp' => $noHP,
+			'alamat' => $alamat
+		);
+		$this->m_pasien->tambah_data($data,'tb_pasien');
+		redirect(base_url('index.php/tambahpasien/rekam_medik'));
+	}*/
+
+	public function rekam_medik(){
 		$idMax = $this->m_pasien->max_id();
 		$rekamMedik = $this->m_rekam->tampil_id_pasien($idMax);
 		$medik = $this->m_rekam->tampil_rekam($idMax);

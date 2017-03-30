@@ -71,7 +71,7 @@
                           <button class="btn btn-primary"><i class="icon icon-search"></i> Details</button>
                         </a>
                         <!--lanjutkan lagi ya-->
-                        <a href="<?php echo base_url() ?>index.php/updatePasien/">
+                        <a href="<?php echo base_url() ?>index.php/updatePasien/tampilPasien/<?= $row->id?>">
                           <button class="btn btn-primary"><i class="icon icon-refresh"></i> Update</button>
                         </a>
                       </center>

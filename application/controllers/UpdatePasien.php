@@ -27,10 +27,18 @@ class UpdatePasien extends CI_Controller {
 
     }
 
-    public function index()
+    public function tampilPasien($id){
+      $dataPasien = $this->m_pasien->getPasien($id);
+       $this->load->view('pegawai/update-pasien.php', array(
+         'dataPasien' => $dataPasien
+       ));
+      //$this->load->view('pegawai/rekam-medik.php',$medik);
+    }
+
+    public function index($idPasien)
     {
-        $data['idPasien'] = $this->m_pasien->getPasien($idPasien);
-        $this->load->view("pegawai/update-pasien.php", $data); //belom dibuat viewnya
+      $this->load->helper('url');
+      $this->load->view('pegawai/update-pasien.php', $dataPasien);
     }
 }
 ?>

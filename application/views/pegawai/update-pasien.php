@@ -25,48 +25,47 @@
       <div class="span12">
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-            <h5>Data Diri Pasien</h5>
+            <h5>Update Pasien</h5>
           </div>
           <div class="widget-content nopadding">
-            <form action="<?php echo base_url('index.php/tambahpasien/tambah_pasien') ?>" method="post" class="form-horizontal">
-			  <div class="control-group">
+            <?php foreach ($dataPasien->result() as $data){ ?>
+            <form action="<?php echo base_url('index.php/updatePasien') ?>" method="post" class="form-horizontal">
+			      <div class="control-group">
                 <label class="control-label">Tipe Pasien :</label>
                 <div class="controls">
                   <select class="span11" name="tipe" required>
-					<option value="#">---Pilih---</option>
-					<option value="1">Pelajar</option>
-					<option value="2">Umum</option>
-				  </select>
+            					<option value="<?=$data->id_jenis_pasien?>"><?=$data->id_jenis_pasien?></option>
+        				  </select>
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">ID Pasien :</label>
+                <label class="control-label">Kode Pasien :</label>
                 <div class="controls">
-                  <input type="text" class="span11" disabled="" value="12345" name="idPasien"/>
+                  <input type="text" class="span11" disabled="" value="<?=$data->kode_pasien?>" name="idPasien"/>
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label">Name :</label>
                 <div class="controls">
-                  <input type="text" class="span11" placeholder="Nama Lengkap" name="namaPasien" required />
+                  <input type="text" class="span11" placeholder="Nama Lengkap" name="namaPasien" required value="<?=$data->nama_pasien?>"/>
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label"> Tanggal Lahir :</label>
                 <div class="controls">
-                  <input type="date" class="span11" name="tglLahir" required />
+                  <input type="date" class="span11" name="tglLahir" required value="<?=$data->tanggal_lahir?>"/>
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label">Alamat</label>
                 <div class="controls">
-                  <textarea class="span11" name="alamat" required></textarea>
+                  <textarea class="span11" name="alamat" required><?=$data->alamat?></textarea>
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label">No Handphone :</label>
                 <div class="controls">
-                  <input type="number" class="span11" placeholder="No Handphone" name="noHP" required/>
+                  <input type="number" class="span11" placeholder="No Handphone" name="noHP" required value="<?=$data->no_hp?>"/>
                 </div>
               </div>
               <div class="control-group">
@@ -79,6 +78,7 @@
                 <button class="btn btn-success">Update</button>
               </div>
             </form>
+            <?php } ?>
           </div>
         </div>
       </div>

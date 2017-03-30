@@ -6,7 +6,7 @@ class M_Pasien extends CI_Model{
 	{
 		parent::__construct();
 	}
-	
+
 	function tampil_pasien() //Select semua data pada tb_pasien
 	{
 		$this->db->from('tb_pasien');
@@ -27,20 +27,20 @@ class M_Pasien extends CI_Model{
 	}
 
 	function getPasien($idPasien){
-		$this->db->where("id", $idPasien); //select sesuai dengan ID Pasien
+
 		$this->db->select("*");
 		$this->db->from("tb_pasien");
-
+		$this->db->where("id", $idPasien); //select sesuai dengan ID Pasien
 		return $this->db->get();
 	}
-	
+
     function updatePasien($data, $condition)
 	{
         //update Pasien
         $this->db->where($condition);
 		$this->db->update("tb_pasien", $data);
     }
-	
+
 }
 
 ?>
