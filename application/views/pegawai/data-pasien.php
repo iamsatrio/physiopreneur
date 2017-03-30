@@ -56,7 +56,7 @@
                       <th>No.</th>
                       <th>Nama</th>
                       <th>Alamat</th>
-                      <th>No HP/th>
+                      <th>No HP</th>
                       <th>Action</th>
                     </tr>
                   </thead>

@@ -51,7 +51,7 @@
         <div class="span4"></div>
         <div class="span4">
           <div class="span3"></div>
-            <a href="tambah-keluhan-tindakan.php">
+            <a href="<?php echo base_url() ?>index.php/tambahrekammedik">
               <button class="btn btn-info"><i class="icon icon-plus"></i> Rekam Medik</button>
             </a>
         </div>
@@ -59,7 +59,10 @@
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
             <h5>Rekam Medik - <?= $data->nama_pasien; ?></h5>
-			<?php }?>
+			<?php 
+				$session_data['idPasienTambahRekam'] = $data->id;
+				$this->session->set_userdata($session_data);
+			}?>
           </div>
           <div class="widget-content nopadding">
             <table class="table table-bordered data-table">

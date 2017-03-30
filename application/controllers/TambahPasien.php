@@ -36,12 +36,12 @@ class TambahPasien extends CI_Controller {
 	public function tambah_pasien(){		
 		$this->load->library('upload');
 		$tipePas = $this->input->post('tipe');
-		$idPasien = $this->input->post('idPasien');
+		$kdPasien = $this->input->post('kdPasien');
 		$namaPasien = $this->input->post('namaPasien');
 		$tglLahir = $this->input->post('tglLahir');
 		$alamat = $this->input->post('alamat');
 		$noHP = $this->input->post('noHP');
-		$namaFile = $namaPasien+$noHP;
+		$namaFile = $kdPasien."_".$namaPasien;
 		$config['upload_path'] = './asset/foto_pasien/';
 		$config['allowed_types'] = 'jpg|png|jpeg';
 		$config['max_size'] = '2048'; //maksimum besar file 2M
@@ -54,7 +54,7 @@ class TambahPasien extends CI_Controller {
 		if($this->upload->do_upload('fotoPasien')){
 			$gbr = $this->upload->data();			
 			$data = array(
-				'id' => $idPasien,
+				'kode_pasien' => $kdPasien,
 				'id_jenis_pasien' => $tipePas,
 				'nama_pasien' => $namaPasien,
 				'tanggal_lahir' => $tglLahir,
