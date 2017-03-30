@@ -29,7 +29,7 @@
       <div class="span2"></div>
 
       <div class="span5">
-          <label class="control-label">Tanggal:&nbsp; 3/2/2017</label>
+          <label class="control-label">Tanggal:&nbsp; <?php echo date('d/m/Y'); ?></label>
       </div>
 
       <div class="span3">

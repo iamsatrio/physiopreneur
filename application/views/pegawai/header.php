@@ -8,6 +8,12 @@
 <link href="<?php echo base_url() ?>font-awesome/css/font-awesome.css" rel="stylesheet" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 
+<?php
+	if(!$this->session->userdata('username') && $this->session->userdata('status') == 0){
+		redirect(base_url());
+	}
+?>
+
 <!--Header-part-->
 <div id="header">
   <img src="<?php echo base_url() ?>img/logo-orang.png" alt="" style="height:70px; width:70px; margin-left:5%;">

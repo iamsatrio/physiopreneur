@@ -28,7 +28,7 @@
         <div class="span2"></div>
 
         <div class="span5">
-            <label class="control-label">Tanggal:&nbsp; 3/2/2017</label>
+            <label class="control-label">Tanggal:&nbsp; <?php echo date('d/m/Y'); ?></label>
         </div>
 
         <div class="span3">
@@ -37,40 +37,41 @@
 
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-            <h5>Pasien : Satrio Wibowo</h5>
+		  <?php foreach($hasil as $data): ?>
+            <h5>Pasien : <?php echo $data->nama_pasien; ?></h5>
           </div>
-
+		  <?php endforeach; ?>
           <div class="widget-content nopadding">
 
-            <form action="#" method="get" class="form-horizontal">
+            <form action="<?php echo base_url('index.php/tambahrekammedik/tambah_keluhan_tindakan') ?>" method="post" class="form-horizontal">
   		        <div class="control-group">
                 <label class="control-label">Keluhan</label>
                 <div class="controls">
-                  <textarea class="span11" ></textarea>
+                  <textarea class="span11" name="keluhan" required></textarea>
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label">Tindakan</label>
                 <div class="controls">
                   <div class="span4">
-                    <label><input type="checkbox" name="radios" />Manual Therapy</label>
-                    <label><input type="checkbox" name="radios" />Infrared</label>
-                    <label><input type="checkbox" name="radios" />Laser</label>
+                    <label><input type="checkbox" name="radios[]" value="Manual Therapy"/>Manual Therapy</label>
+                    <label><input type="checkbox" name="radios[]" value="Infrared"/>Infrared</label>
+                    <label><input type="checkbox" name="radios[]" value="Laser"/>Laser</label>
                   </div>
                   <div class="span4">
-                    <label><input type="checkbox" name="radios" />Functional Exercise</label>
-                    <label><input type="checkbox" name="radios" />Hot / Ice</label>
-                    <label><input type="checkbox" name="radios" />Ultrasound Dithermy</label>
+                    <label><input type="checkbox" name="radios[]" value="Functional Exercise"/>Functional Exercise</label>
+                    <label><input type="checkbox" name="radios[]" value="Hot / Ice"/>Hot / Ice</label>
+                    <label><input type="checkbox" name="radios[]" value="Ultrasound Dithermy"/>Ultrasound Dithermy</label>
                   </div>
                   <div class="span4">
-                    <label><input type="checkbox" name="radios" />Tens/Es</label>
-                    <label><input type="checkbox" name="radios" />Gym</label>
-                    <label><input type="checkbox" name="radios" />Drill</label>
+                    <label><input type="checkbox" name="radios[]" value="Tens / ES"/>Tens / ES</label>
+                    <label><input type="checkbox" name="radios[]" value="Gym"/>Gym</label>
+                    <label><input type="checkbox" name="radios[]" value="Drill"/>Drill</label>
                   </div>
                 </div>
               </div>
               <div class="form-actions">
-                      <span class="pull-right"><a type="submit" href="<?php echo base_url()?>index.php/tambahrekammedik" class="btn btn-success" /> Simpan</a></span>
+				<span class="pull-right"><input type="submit" class="btn btn-success" value="Simpan"/></span>
               </div>
             </div>
           </div>

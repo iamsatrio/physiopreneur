@@ -36,7 +36,7 @@ class TambahPasien extends CI_Controller {
 	public function tambah_pasien(){
 		$this->load->library('upload');
 		$tipePas = $this->input->post('tipe');
-		$idPasien = $this->input->post('idPasien');
+		$kdPasien = $this->input->post('kdPasien');
 		$namaPasien = $this->input->post('namaPasien');
 		$tglLahir = $this->input->post('tglLahir');
 		$alamat = $this->input->post('alamat');
@@ -54,7 +54,7 @@ class TambahPasien extends CI_Controller {
 		if($this->upload->do_upload('fotoPasien')){
 			$gbr = $this->upload->data();
 			$data = array(
-				'id' => $idPasien,
+				'kode_pasien' => $kdPasien,
 				'id_jenis_pasien' => $tipePas,
 				'nama_pasien' => $namaPasien,
 				'tanggal_lahir' => $tglLahir,

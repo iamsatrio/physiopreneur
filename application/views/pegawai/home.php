@@ -46,22 +46,21 @@
                Input ID Pasien
             </h4>
          </div>
-
+		<form action="<?php echo base_url('index.php/rekammedik') ?>" method="post">
          <div class = "modal-body">
-            <center><input type="text" name="id_pasien" value="" placeholder="ID Pasien"/></center>
+            <center><input type="text" name="kd_pasien" placeholder="Kode Pasien" required/></center>
          </div>
 
          <div class = "modal-footer">
             <button type = "button" class = "btn btn-default" data-dismiss = "modal">
                Close
-            </button>
-            <a href="rekam-medik.php">
-              <button type = "button" class = "btn btn-primary">
+            </button> 
+              <button type = "submit" class = "btn btn-primary">
                 <i class="icon-search"></i>
                  Search
               </button>
-            </a>
          </div>
+		</form>
 
       </div><!-- /.modal-content -->
    </div><!-- /.modal-dialog -->

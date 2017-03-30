@@ -27,7 +27,7 @@ class Login extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->helper('url');
+		//$this->load->helper('url');
 		$this->load->view('login.php');
 	}
 
@@ -58,8 +58,9 @@ class Login extends CI_Controller {
 	}
 
 	function action_logout(){
-		$this->session->sess_destroy();
 		$session_data['status'] = 0;
+		$this->session->set_userdata($session_data);
+		$this->session->sess_destroy();
 		redirect(base_url());
 	}
 }

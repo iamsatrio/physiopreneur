@@ -31,9 +31,9 @@
           <div class="span4"></div>
           <?php foreach ($rekamMedik->result() as $data){ ?>
               <label class="control-label">ID Pasien &nbsp; : &nbsp;<?= $data->id; ?> </label>
-              <label class="control-label">Nama Pasien &nbsp; : &nbsp;<?= $data->nama_pasien; ?> </label>
+              <label class="control-label">Nama Pasien &nbsp; : &nbsp;<?= $data->nama_pasien; ?> </label>			  
         </div>
-
+		
         <div class="span4">  </div>
 
         <div class="span4">
@@ -50,7 +50,10 @@
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
             <h5>Rekam Medik - <?= $data->nama_pasien; ?></h5>
-        <?php }?>
+        <?php 
+			$session_data['idPasienTambahRekam'] = $data->id;
+			$this->session->set_userdata($session_data);
+		}?>
           </div>
           <div class="widget-content nopadding">
             <table class="table table-bordered data-table">
