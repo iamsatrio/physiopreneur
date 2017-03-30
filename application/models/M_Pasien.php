@@ -16,9 +16,8 @@ class M_Pasien extends CI_Model{
 	function tambah_pasien($data,$table){
 		$this->db->insert($table,$data);
 	}
-
-
-	//max_id untuk tampil saat setela add
+	
+	//max_id untuk tampil saat setelah add
 	function max_id()
 	{
 		$this->db->select_max('id');
@@ -40,6 +39,8 @@ class M_Pasien extends CI_Model{
         $this->db->where($condition);
 		$this->db->update("tb_pasien", $data);
     }
+	
+	
 
 }
 
