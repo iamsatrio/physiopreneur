@@ -43,7 +43,7 @@
             </button>
 
             <h4 class = "modal-title" id = "myModalLabel">
-               Input ID Pasien
+               Input Kode Pasien
             </h4>
          </div>
 		<form action="<?php echo base_url('index.php/rekammedik') ?>" method="post">
@@ -54,7 +54,7 @@
          <div class = "modal-footer">
             <button type = "button" class = "btn btn-default" data-dismiss = "modal">
                Close
-            </button> 
+            </button>
               <button type = "submit" class = "btn btn-primary">
                 <i class="icon-search"></i>
                  Search

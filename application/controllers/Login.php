@@ -43,11 +43,13 @@ class Login extends CI_Controller {
 				$session_data['status'] = 1;
 				$this->session->set_userdata($session_data);
 			}
-			
+
 			if ($session_data['role_id']==1) {
 				redirect(base_url('index.php/manager'));
 			} else if ($session_data['role_id']==2) {
 				redirect(base_url('index.php/pegawai'));
+			} else if ($session_data['role_id']==3) {
+				redirect(base_url('index.php/superadmin'));
 			}
 
 		}else{

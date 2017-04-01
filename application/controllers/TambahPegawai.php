@@ -18,7 +18,7 @@ class TambahPegawai extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	 
+
 	function __construct()
 	{
 		parent::__construct();
@@ -33,7 +33,7 @@ class TambahPegawai extends CI_Controller {
 
 	public function tambah_pegawai(){
 		$this->load->library('upload');
-		$idPegawai = $this->input->post('id')
+		$idPegawai = $this->input->post('id');
 		$nik = $this->input->post('nik');
 		$namaPegawai = $this->input->post('namaPegawai');
 		$noHpPegawai = $this->input->post('noHp');
@@ -47,12 +47,12 @@ class TambahPegawai extends CI_Controller {
         $config['max_height']  = '1288'; //tinggi maksimu 1288 px
         $config['file_name'] = $namaFile; //nama yang terupload nantinya
 		$idUserPeg = $this->input->post('idUserPeg');
-		
-					
+
+
 		$this->upload->initialize($config);
-							
+
 		if($this->upload->do_upload('fotoPegawai')){
-			$gbr = $this->upload->data();			
+			$gbr = $this->upload->data();
 			$data = array(
 				'id' => $idPegawai,
 				'nik' => $nik,
@@ -64,11 +64,11 @@ class TambahPegawai extends CI_Controller {
 			);
 			$this->m_pegawai->tambah_pegawai($data,'tb_pegawai');
 			redirect(base_url('index.php/tambahpasien/rekam_medik'), 'refresh');
-		}else{			
-			//echo "<script type='text/javascript'>alert('Upload Failed!!');</script>";			
+		}else{
+			//echo "<script type='text/javascript'>alert('Upload Failed!!');</script>";
 			//redirect(base_url('index.php/tambahpasien'), 'refresh');
 			$error = array('error' => $this->upload->display_errors());
 			echo $error['error'];
-		}	
+		}
 	}
 }
