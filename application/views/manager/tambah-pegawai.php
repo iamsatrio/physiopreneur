@@ -59,7 +59,7 @@
               <div class="control-group">
                 <label class="control-label">NIK :</label>
                 <div class="controls">
-                  <input type="text" class="span11" disabled="" value="12345" name="idPasien"/>
+                  <input type="text" class="span11" disabled="" name="nik"/>
                 </div>
               </div>
               <div class="control-group">
@@ -95,7 +95,7 @@
               <div class="control-group">
                 <label class="control-label">Foto :</label>
                 <div class="controls">
-                  <input type="file" class="span11" />
+                  <input type="file" class="span11" name="fotoPegawai"/>
                 </div>
               </div>
               <div class="form-actions">

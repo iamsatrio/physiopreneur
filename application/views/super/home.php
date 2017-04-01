@@ -32,7 +32,7 @@
     <div class="quick-actions_homepage">
       <ul class="quick-actions">
 	       <div id="search"></div>
-        <li class="bg_lb"> <a href="<?php echo base_url('index.php/tambahpegawai') ?>"> <i class="icon-plus"></i>Tambah Manager</a> </li>
+        <li class="bg_lb"> <a href="<?php echo base_url('index.php/SuperAdmin/tambahManager') ?>"> <i class="icon-plus"></i>Tambah Manager</a> </li>
         <li class="bg_lg" data-toggle = "modal" data-target = "#myModal"> <a href="#"> <i class="icon-search"></i> Cari Manager</a> </li>
       </ul>
     </div>
@@ -51,12 +51,12 @@
             </button>
 
             <h4 class = "modal-title" id = "myModalLabel">
-               Input ID Manager
+               Input NIK Manager
             </h4>
          </div>
 
          <div class = "modal-body">
-            <center><input type="text" name="id_pasien" value="" placeholder="ID Pasien"/></center>
+            <center><input type="text" name="id_pasien" value="" placeholder="NIK"/></center>
          </div>
 
          <div class = "modal-footer">

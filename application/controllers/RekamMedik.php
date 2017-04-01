@@ -17,14 +17,14 @@ class RekamMedik extends CI_Controller {
        ));
       //$this->load->view('pegawai/rekam-medik.php',$medik);
     }
-    
+
     public function index()
     {
         //$this->load->helper('url');
         //$this->load->view('pegawai/rekam-medik.php', $rekamMedik);
 		$searchKodePasien = $this->input->post('kd_pasien');
 		if($searchKodePasien == ''){
-			$idPasien = $this->session->userdata("idPasienTambahRekam");		
+			$idPasien = $this->session->userdata("idPasienTambahRekam");
 			$rekamMedik = $this->m_rekam->tampil_id_pasien($idPasien);
 			$medik = $this->m_rekam->tampil_rekam($idPasien);
 			$this->load->view('pegawai/rekam-medik.php', array(
@@ -44,10 +44,10 @@ class RekamMedik extends CI_Controller {
 					'medik' => $medik
 				));
 			}
-			
-		}		
+
+		}
     }
-	
+
 	public function searchRekamMedikPasien(){
 		$searchKodePasien = $this->input->post('kd_pasien');
 		$rekamMedik = $this->m_rekam->tampil_id_pasien($searchKodePasien);

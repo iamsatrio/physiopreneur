@@ -27,7 +27,7 @@
 
     <div class="row-fluid">
       <div class="span12">
-        <form action="<?php echo base_url('index.php/tambahpasien/tambah_pasien') ?>" method="post" class="form-horizontal">
+        <form action="<?php echo base_url('index.php/SuperAdmin/actionTambahManager') ?>" method="post" class="form-horizontal">
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
             <h5>Informasi Akun</h5>
@@ -52,20 +52,20 @@
 
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-            <h5>Data Diri Pegawai</h5>
+            <h5>Data Diri Manager</h5>
           </div>
           <div class="widget-content nopadding">
 
               <div class="control-group">
                 <label class="control-label">NIK :</label>
                 <div class="controls">
-                  <input type="text" class="span11" disabled="" value="12345" name="idPasien"/>
+                  <input type="text" class="span11" disabled="" value="BDO-02" name="nik"/>
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label">Name :</label>
                 <div class="controls">
-                  <input type="text" class="span11" placeholder="Nama Lengkap" name="namaPasien" required />
+                  <input type="text" class="span11" placeholder="Nama Lengkap" name="namaManager" required />
                 </div>
               </div>
               <div class="control-group">
@@ -82,20 +82,9 @@
               </div>
 
               <div class="control-group">
-                <label class="control-label">Lokasi :</label>
-                <div class="controls">
-                  <select class="span11" name="idLokasi" required>
-                      <option value="#">---Pilih---</option>
-      					      <option value="1">Bandung</option>
-                      <option value="2">Jakarta</option>
-                 </select>
-                </div>
-              </div>
-
-              <div class="control-group">
                 <label class="control-label">Foto :</label>
                 <div class="controls">
-                  <input type="file" class="span11" />
+                  <input type="file" class="span11" name="fotoManager"/>
                 </div>
               </div>
               <div class="form-actions">

@@ -31,12 +31,9 @@
   <!--End-breadcrumbs-->
   <!--php ambil data-->
   <?php
-    $jumlahPegawai = $listPegawai->num_rows();
-    if($jumlahPegawai ==0 ){
-  ?>
-  <!--Kalau kosong, kita harus melakukan add pasien-->
-  <a href="<?= base_url() ?> index.php/pegawai/TambahPegawai">Tambah Pegawai</a>
-  <?php
+    $jumlahManager = $dataManager->num_rows();
+    if($jumlahManager ==0 ){
+      redirect(base_url('index.php/SuperAdmin/tambah_manager'), 'refresh');
     }
     else {
   ?>
@@ -56,7 +53,7 @@
                   <th>NIK</th>
                   <th>Nama</th>
                   <th>No HP</th>
-                  <th>Lokasi</th>
+                  <th>Alamat </th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -64,20 +61,20 @@
                 <?php
                   //Kita akan melakukan looping sesuai dengan data yg dimiliki
                   $nomor = 1; //untuk pengisian nomor
-                  foreach ($listPegawai->result() as $row){
+                  foreach ($dataManager->result() as $row){
                 ?>
                 <tr>
                   <td><center><?= $nomor++ ?></center></td>
                   <td><?= $row->nik ?></td>
-                  <td><?= $row->nama ?></td>
+                  <td><?= $row->nama_manager ?></td>
                   <td><?= $row->no_hp?></td>
-                  <td><?= $row->lokasi?>, <?= $row->kota?></td>
+                  <td><?= $row->alamat?></td>
                   <td>
                     <center>
                       <!--akan masuk ke rekam medik-->
-                      <!-- <a href="<?php echo base_url() ?>index.php/rekammedik/tampilPasien/<?= $row->id?>"> -->
+                      <a href="<?php echo base_url() ?>index.php/SuperAdmin/tampilDetailManager/<?= $row->id?>">
                         <button class="btn btn-primary"><i class="icon icon-search"></i> Details</button>
-                      <!-- </a> -->
+                      </a>
                     </center>
                   </td>
                 </tr>

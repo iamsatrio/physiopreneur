@@ -51,12 +51,12 @@
             </button>
 
             <h4 class = "modal-title" id = "myModalLabel">
-               Input ID Pasien
+               Input NIK Pegawai
             </h4>
          </div>
 
          <div class = "modal-body">
-            <center><input type="text" name="id_pasien" value="" placeholder="ID Pasien"/></center>
+            <center><input type="text" name="id_pasien" value="" placeholder="NIK Pegawai"/></center>
          </div>
 
          <div class = "modal-footer">
