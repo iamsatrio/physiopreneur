@@ -63,7 +63,7 @@
               <div class="control-group">
                 <label class="control-label">Kode Pasien :</label>
                 <div class="controls">
-                  <input type="text" class="span11" value="" name="kdPasien" readonly/>
+                  <input type="text" class="span11" value="<?php echo $genKdPasien; ?>" name="kdPasien" readonly/>
                 </div>
               </div>
               <div class="control-group">
