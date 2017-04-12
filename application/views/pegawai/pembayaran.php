@@ -7,7 +7,11 @@
 </head>
 <body>
 
-
+  <?php
+  	if(!$this->session->userdata('username') && $this->session->userdata('status') == 0){
+  		redirect(base_url());
+  	}
+  ?>
   <!--Header-part-->
   <?php include 'header.php';?>
 
@@ -31,10 +35,13 @@
       <div class="span5">
           <label class="control-label">Tanggal:&nbsp; <?php echo date('d/m/Y'); ?></label>
       </div>
-
+      <?php
+      foreach ($dataPegawai->result() as $row){
+         ?>
       <div class="span3">
-            <label class="control-label">Physioterapist:&nbsp; Zona Wibowo</label>
+            <label class="control-label">Physioterapist:&nbsp; <?= $row->nama ?></label>
       </div>
+      <?php } ?>
       <div class="span11">
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>

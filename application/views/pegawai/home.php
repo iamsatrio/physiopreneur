@@ -25,7 +25,7 @@
       <ul class="quick-actions">
 	       <div id="search"></div>
         <li class="bg_lb"> <a href="<?php echo base_url('index.php/tambahpasien') ?>"> <i class="icon-plus"></i>Tambah Pasien</a> </li>
-        <li class="bg_lg" data-toggle = "modal" data-target = "#myModal"> <a href="#"> <i class="icon-search"></i> Cari Pasien</a> </li>
+        <li class="bg_lg" data-toggle="modal" data-target = "#myModal"> <a href="#"> <i class="icon-search"></i> Cari Pasien</a> </li>
       </ul>
     </div>
 <!--End-Action boxes-->
