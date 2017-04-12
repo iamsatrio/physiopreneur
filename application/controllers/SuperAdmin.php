@@ -37,27 +37,24 @@ class SuperAdmin extends CI_Controller {
   		$idPegawai = $this->input->post('id');
   		$nik = $this->input->post('nik');
   		$namaManager = $this->input->post('namaManager');
-  		$noHpManager = $this->input->post('noHP');
+  		$noHPManager = $this->input->post('noHP');
   		$alamat = $this->input->post('alamat');
-  		$namaFile = $namaManager+$noHpManager;
+  		$namaFile = $namaManager+$noHPManager;
   		$config['upload_path'] = './asset/foto_manager/';
   		$config['allowed_types'] = 'jpg|png|jpeg';
   		$config['max_size'] = '2048'; //maksimum besar file 2M
           $config['max_width']  = '1288'; //lebar maksimum 1288 px
           $config['max_height']  = '1288'; //tinggi maksimu 1288 px
           $config['file_name'] = $namaFile; //nama yang terupload nantinya
-  		$idUserPeg = $this->input->post('idUserPeg');
-
 
   		$this->upload->initialize($config);
 
   		if($this->upload->do_upload('fotoManager')){
   			$gbr = $this->upload->data();
   			$data = array(
-  				'id' => $idPegawai,
   				'nik' => $nik,
-  				'nama' => $namaPegawai,
-  				'no_hp' => $noHP,
+  				'nama_manager' => $namaManager,
+  				'no_hp' => $noHPManager,
   				'alamat' => $alamat,
   				'foto' => $gbr['file_name']
   			);
