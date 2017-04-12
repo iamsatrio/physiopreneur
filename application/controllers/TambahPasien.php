@@ -29,8 +29,13 @@ class TambahPasien extends CI_Controller {
 	public function index()
 	{
 		//$this->load->view('welcome_message');
-		$this->load->helper('url');
-		$this->load->view('pegawai/tambah-pasien.php');
+		//$this->load->helper('url');
+		//$this->load->view('pegawai/tambah-pasien.php');
+		$idLokasi = $this->session->userdata("lokasi_id");
+		$randomNumb = rand(10,100);
+		$timeNow = substr(time(),7);
+		$generateID['genKdPasien'] = $idLokasi . $randomNumb . $timeNow;
+		$this->load->view('pegawai/tambah-pasien.php',$generateID);
 	}
 
 	public function tambah_pasien(){
