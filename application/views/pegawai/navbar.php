@@ -2,13 +2,13 @@
   <ul>
     <li><a href="<?php echo base_url() ?>index.php/pegawai"><i class="icon icon-home"></i> <span>Home</span></a> </li>
     <li><a href="<?php echo base_url() ?>index.php/datapasien"><i class="icon icon-table"></i> <span>Data Pasien</span></a> </li>
-    <li data-toggle="modal" data-target = "#myModal"><a href="#"><i class="icon icon-money"></i> <span>Pembayaran</span></a> </li>
+    <li data-toggle="modal" data-target = "#myModal1"><a href="#"><i class="icon icon-money"></i> <span>Pembayaran</span></a> </li>
     <li><a href="<?php echo base_url() ?>index.php/laporan"><i class="icon icon-book"></i> <span>Laporan</span></a> </li>
   </ul>
 </div>
 
 <!-- Modal -->
-<div class = "modal fade" id = "myModal" tabindex = "-1" role = "dialog"
+<div class = "modal fade" id = "myModal1" tabindex = "-1" role = "dialog"
    aria-labelledby = "myModalLabel" aria-hidden = "true">
 
    <div class = "modal-dialog">
@@ -23,7 +23,7 @@
                Input Kode Pasien
             </h4>
          </div>
-		<form action="<?php echo base_url('index.php/pembayaran/tampilPegawai') ?>" method="post">
+		<form action="<?php echo base_url('index.php/pembayaran/tampilPasien') ?>" method="post">
          <div class = "modal-body">
             <center><input type="text" name="kd_pasien" placeholder="Kode Pasien" required/></center>
          </div>
