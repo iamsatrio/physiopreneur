@@ -30,11 +30,13 @@
         <div class="span5">
             <label class="control-label">Tanggal:&nbsp; <?php echo date('d/m/Y'); ?></label>
         </div>
-
+		<?php				
+				foreach ($dataPegawai as $row): 					
+			?>
         <div class="span3">
-              <label class="control-label">Physioterapist:&nbsp; Zona</label>
+              <label class="control-label">Physioterapist:&nbsp; <?= $row->nama ?></label>
         </div>
-
+				<?php endforeach; ?>
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
 		  <?php foreach($hasil as $data): ?>

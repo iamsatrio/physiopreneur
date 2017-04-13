@@ -6,13 +6,15 @@ class TambahRekamMedik extends CI_Controller {
     function __construct(){
         parent::__construct();
         $this->load->model('m_rekam');
-
+		$this->load->model('m_pegawai');
     }
 
     public function index(){
         //$this->load->helper('url');
         //$this->load->view('pegawai/tambah-keluhan-tindakan.php');
 		$id = $this->session->userdata("idPasienTambahRekam");
+		$idPegawai = $this->session->userdata("id");
+		$data['dataPegawai'] = $this->m_pegawai->get_nama_pegawai($idPegawai);
 		$data['hasil'] = $this->m_rekam->get_nama_pasien($id);
 		$this->load->view('pegawai/tambah-keluhan-tindakan.php',$data);
     }

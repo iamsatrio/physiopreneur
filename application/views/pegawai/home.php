@@ -48,7 +48,7 @@
          </div>
 		<form action="<?php echo base_url('index.php/rekammedik') ?>" method="post">
          <div class = "modal-body">
-            <center><input type="text" name="kd_pasien" placeholder="Kode Pasien" required/></center>
+            <center><input type="text" name="kd_pasien" placeholder="Kode Pasien" required /></center>
          </div>
 
          <div class = "modal-footer">

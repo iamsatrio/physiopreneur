@@ -13,7 +13,7 @@ class M_Pegawai extends CI_Model{
 
 	function tampil_data($id)
 	{
-		$this->db->where('id', $idPegawai);
+		$this->db->where('id', $id);
 		$ambildata = $this->db->get('tb_pegawai');
 		if ($ambildata->num_rows() > 0 ) {
             foreach ($ambildata->result() as $data) {
@@ -28,6 +28,23 @@ class M_Pegawai extends CI_Model{
 		$this->db->from('tb_pegawai');
     $this->db->join('tb_lokasi','tb_pegawai.id_lokasi = tb_lokasi.id');
 		return $this->db->get();
+	}
+	
+	function data_pegawai($id){
+		$this->db->select('nama');
+        $this->db->from('tb_pegawai');
+        $this->db->where('id',$id);
+		    return $this->db->get();
+	}
+	
+	function get_nama_pegawai($id){
+		$this->db->select('nama');
+		$this->db->from('tb_pegawai');
+		$this->db->where('id',$id);
+		$result = $this->db->get();
+		if($result->num_rows() > 0){
+			return $result->result();
+		}		
 	}
 
 }
