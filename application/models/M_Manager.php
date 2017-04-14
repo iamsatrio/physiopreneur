@@ -14,7 +14,7 @@ class M_Manager extends CI_Model{
 	function tampil_data($id)
 	{
 		$this->db->where('id', $idPegawai);
-		$ambildata = $this->db->get('tb_manager');
+		$ambildata = $this->db->get('tb_pegawai');
 		if ($ambildata->num_rows() > 0 ) {
             foreach ($ambildata->result() as $data) {
                 $hasil[] = $data;
@@ -25,15 +25,20 @@ class M_Manager extends CI_Model{
 
 	function tampil_manager()
 	{
-		$this->db->from('tb_manager');
+		$this->db->select("*");
+		$this->db->from('tb_pegawai a');
+		$this->db->join("tb_user b","a.id_user = b.id");
+		$this->db->where("b.id_role",1);
 		return $this->db->get();
 	}
 
 	function get_manager($idManager){
 
 		$this->db->select("*");
-		$this->db->from("tb_manager");
-		$this->db->where("id", $idManager); //select sesuai dengan ID Manager
+		$this->db->from("tb_pegawai a");
+		$this->db->join("tb_user b","a.id_user = b.id");
+		$this->db->where("a.id", $idManager);
+		$this->db->where("b.id_role",1); //select sesuai dengan ID Manager
 		return $this->db->get();
 	}
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Tambah Pasien - Physiopreneur</title>
+<title>Data Diri Pasien - Physiopreneur</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -29,9 +29,9 @@
           </div>
           <div class="widget-content nopadding">
             <?php foreach ($dataPasien->result() as $data){ ?>
-            <form action="<?php echo base_url('index.php/updatePasien') ?>" method="post" class="form-horizontal">
+            <form action="<?php echo base_url('index.php/Pegawai/actionUpdatePasien') ?>" method="post" class="form-horizontal">
 			      <div class="control-group">
-                <label class="control-label">Tipe Pasien :</label>
+                <label class="control-label">Tipe Pasien</label>
                 <div class="controls">
                   <select class="span11" name="tipe" required>
             					<option value="<?=$data->id_jenis_pasien?>"><?=$data->id_jenis_pasien?></option>
@@ -39,19 +39,19 @@
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">Kode Pasien :</label>
+                <label class="control-label">Kode Pasien</label>
                 <div class="controls">
                   <input type="text" class="span11" disabled="" value="<?=$data->kode_pasien?>" name="idPasien"/>
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">Name :</label>
+                <label class="control-label">Nama</label>
                 <div class="controls">
                   <input type="text" class="span11" placeholder="Nama Lengkap" name="namaPasien" required value="<?=$data->nama_pasien?>"/>
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label"> Tanggal Lahir :</label>
+                <label class="control-label"> Tanggal Lahir</label>
                 <div class="controls">
                   <input type="date" class="span11" name="tglLahir" required value="<?=$data->tanggal_lahir?>"/>
                 </div>
@@ -63,14 +63,15 @@
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">No Handphone :</label>
+                <label class="control-label">No Handphone</label>
                 <div class="controls">
                   <input type="number" class="span11" placeholder="No Handphone" name="noHP" required value="<?=$data->no_hp?>"/>
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">Foto :</label>
+                <label class="control-label">Foto</label>
                 <div class="controls">
+                  <img src="<?php echo base_url() ?>asset/foto_pasien/<?=$data->foto?>" alt="<?=$data->foto?>" style="width:100px; height:100px;"/>
                   <input type="file" class="span11" />
                 </div>
               </div>

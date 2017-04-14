@@ -28,7 +28,7 @@
     if($jumlahPasien ==0 ){
   ?>
   <!--Kalau kosong, kita harus melakukan add pasien-->
-  <a href="<?= base_url() ?> index.php/pegawai/tambahpasien">Tambah Pasien</a>
+  <a href="<?= base_url() ?> index.php/pegawai/viewTambahPasien">Tambah Pasien</a>
   <?php
     }
     else {
@@ -67,11 +67,11 @@
                     <td>
                       <center>
                         <!--akan masuk ke rekam medik-->
-                        <a href="<?php echo base_url() ?>index.php/rekammedik/tampilPasien/<?= $row->id?>">
+                        <a href="<?php echo base_url() ?>index.php/pegawai/viewRekamMedik/<?= $row->id?>">
                           <button class="btn btn-primary"><i class="icon icon-search"></i> Details</button>
                         </a>
                         <!--lanjutkan lagi ya-->
-                        <a href="<?php echo base_url() ?>index.php/updatePasien/tampilPasien/<?= $row->id?>">
+                        <a href="<?php echo base_url() ?>index.php/pegawai/viewUpdatePasien/<?= $row->id?>">
                           <button class="btn btn-primary"><i class="icon icon-refresh"></i> Update</button>
                         </a>
                       </center>

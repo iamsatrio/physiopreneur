@@ -1,9 +1,9 @@
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
   <ul>
     <li><a href="<?php echo base_url() ?>index.php/pegawai"><i class="icon icon-home"></i> <span>Home</span></a> </li>
-    <li><a href="<?php echo base_url() ?>index.php/datapasien"><i class="icon icon-table"></i> <span>Data Pasien</span></a> </li>
+    <li><a href="<?php echo base_url() ?>index.php/pegawai/viewDataPasien"><i class="icon icon-table"></i> <span>Data Pasien</span></a> </li>
     <li data-toggle="modal" data-target = "#myModal1"><a href="#"><i class="icon icon-money"></i> <span>Pembayaran</span></a> </li>
-    <li><a href="<?php echo base_url() ?>index.php/laporan"><i class="icon icon-book"></i> <span>Laporan</span></a> </li>
+    <li><a href="<?php echo base_url() ?>index.php/pegawai/viewLaporan"><i class="icon icon-book"></i> <span>Laporan</span></a></li>
   </ul>
 </div>
 
@@ -23,9 +23,9 @@
                Input Kode Pasien
             </h4>
          </div>
-		<form action="<?php echo base_url('index.php/pembayaran/tampilPasien') ?>" method="post">
+		<form action="<?php echo base_url('index.php/pegawai/viewPembayaran') ?>" method="post">
          <div class = "modal-body">
-            <center><input type="text" name="kd_pasien" placeholder="Kode Pasien" required/></center>
+            <center><input type="text" name="kd_pasien" placeholder="Kode Pasien" required autofocus=""/></center>
          </div>
 
          <div class = "modal-footer">

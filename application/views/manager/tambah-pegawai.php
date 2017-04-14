@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Tambah Pasien - Physiopreneur</title>
+<title>Tambah Pegawai - Physiopreneur</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="<?php echo base_url()?>css/bootstrap.min.css" />
@@ -27,22 +27,28 @@
 
     <div class="row-fluid">
       <div class="span12">
-        <form action="<?php echo base_url('index.php/tambahpasien/tambah_pasien') ?>" method="post" class="form-horizontal">
+        <form action="<?php echo base_url('index.php/manager/actionTambahPegawai') ?>" method="post" class="form-horizontal">
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
             <h5>Informasi Akun</h5>
           </div>
           <div class="widget-content nopadding">
               <div class="control-group">
-                <label class="control-label">Username :</label>
+                <label class="control-label">Username</label>
                 <div class="controls">
-                  <input type="text" class="span11" placeholder="Username" name="username" required />
+                  <input type="text" placeholder="Username" name="username" required />
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">Password :</label>
+                <label class="control-label">Password</label>
                 <div class="controls">
-                  <input type="password" class="span11" placeholder="Password" name="password" required />
+                  <input type="password" name="password" id="pwd" />
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Confirm password</label>
+                <div class="controls">
+                  <input type="password" name="confirm_password" id="pwd2" />
                 </div>
               </div>
           </div>
@@ -57,34 +63,34 @@
           <div class="widget-content nopadding">
 
               <div class="control-group">
-                <label class="control-label">NIK :</label>
+                <label class="control-label">NIK</label>
                 <div class="controls">
-                  <input type="text" class="span11" disabled="" name="nik"/>
+                  <input type="text" disabled="" name="nik"/>
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">Name :</label>
+                <label class="control-label">Nama</label>
                 <div class="controls">
-                  <input type="text" class="span11" placeholder="Nama Lengkap" name="namaPasien" required />
+                  <input type="text" class="span8" placeholder="Nama Lengkap" name="namaPasien" required />
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label"> Nomor HP :</label>
+                <label class="control-label"> Nomor HP</label>
                 <div class="controls">
-                  <input type="phone" class="span11" name="noHP" required />
+                  <input type="phone" name="noHP" required />
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label">Alamat</label>
                 <div class="controls">
-                  <textarea class="span11" name="alamat" required></textarea>
+                  <textarea class="span8" name="alamat" required></textarea>
                 </div>
               </div>
 
               <div class="control-group">
-                <label class="control-label">Lokasi :</label>
+                <label class="control-label">Lokasi</label>
                 <div class="controls">
-                  <select class="span11" name="idLokasi" required>
+                  <select name="idLokasi" required>
                       <option value="#">---Pilih---</option>
       					      <option value="1">Bandung</option>
                       <option value="2">Jakarta</option>
@@ -93,7 +99,7 @@
               </div>
 
               <div class="control-group">
-                <label class="control-label">Foto :</label>
+                <label class="control-label">Foto</label>
                 <div class="controls">
                   <input type="file" class="span11" name="fotoPegawai"/>
                 </div>
