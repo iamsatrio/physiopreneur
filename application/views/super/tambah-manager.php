@@ -34,15 +34,21 @@
           </div>
           <div class="widget-content nopadding">
               <div class="control-group">
-                <label class="control-label">Username :</label>
+                <label class="control-label">Username</label>
                 <div class="controls">
-                  <input type="text" class="span11" placeholder="Username" name="username" required />
+                  <input type="text" placeholder="Username" name="username" required />
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">Password :</label>
+                <label class="control-label">Password</label>
                 <div class="controls">
-                  <input type="password" class="span11" placeholder="Password" name="password" required />
+                  <input type="password" name="password" id="pwd" placeholder="Password"/>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Confirm Password</label>
+                <div class="controls">
+                  <input type="password" name="confirm_password" id="pwd2" placeholder="Confirm Password" />
                 </div>
               </div>
           </div>
@@ -55,36 +61,35 @@
             <h5>Data Diri Manager</h5>
           </div>
           <div class="widget-content nopadding">
-
               <div class="control-group">
-                <label class="control-label">NIK :</label>
+                <label class="control-label">NIK</label>
                 <div class="controls">
-                  <input type="text" class="span11" disabled="" value="BDO-02" name="nik"/>
+                  <input type="text" disabled="" value="" name="nik"/>
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">Name :</label>
+                <label class="control-label">Nama</label>
                 <div class="controls">
-                  <input type="text" class="span11" placeholder="Nama Lengkap" name="namaManager" required />
+                  <input type="text" class="span7" placeholder="Nama Lengkap" name="namaManager" required />
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label"> Nomor HP :</label>
+                <label class="control-label">Nomor HP</label>
                 <div class="controls">
-                  <input type="phone" class="span11" name="noHP" required />
+                  <input type="phone" name="noHP" required placeholder="Handphone"/>
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label">Alamat</label>
                 <div class="controls">
-                  <textarea class="span11" name="alamat" required></textarea>
+                  <textarea class="span7" name="alamat" required placeholder="Alamat Lengkap"></textarea>
                 </div>
               </div>
 
               <div class="control-group">
-                <label class="control-label">Foto :</label>
+                <label class="control-label">Foto</label>
                 <div class="controls">
-                  <input type="file" class="span11" name="fotoManager"/>
+                  <input type="file" name="fotoManager"/>
                 </div>
               </div>
               <div class="form-actions">

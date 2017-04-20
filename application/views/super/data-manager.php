@@ -66,7 +66,7 @@
                 <tr>
                   <td><center><?= $nomor++ ?></center></td>
                   <td><?= $row->nik ?></td>
-                  <td><?= $row->nama_manager ?></td>
+                  <td><?= $row->nama ?></td>
                   <td><?= $row->no_hp?></td>
                   <td><?= $row->alamat?></td>
                   <td>

@@ -30,8 +30,8 @@
         <div class="span5">
             <label class="control-label">Tanggal:&nbsp; <?php echo date('d/m/Y'); ?></label>
         </div>
-		<?php				
-				foreach ($dataPegawai as $row): 					
+		<?php
+				foreach ($dataPegawai as $row):
 			?>
         <div class="span3">
               <label class="control-label">Physioterapist:&nbsp; <?= $row->nama ?></label>
@@ -45,7 +45,7 @@
 		  <?php endforeach; ?>
           <div class="widget-content nopadding">
 
-            <form action="<?php echo base_url('index.php/tambahrekammedik/tambah_keluhan_tindakan') ?>" method="post" class="form-horizontal">
+            <form action="<?php echo base_url('index.php/Pegawai/actionTambahKeluhan') ?>" method="post" class="form-horizontal">
   		        <div class="control-group">
                 <label class="control-label">Keluhan</label>
                 <div class="controls">

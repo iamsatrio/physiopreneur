@@ -24,7 +24,7 @@
     <div class="quick-actions_homepage">
       <ul class="quick-actions">
 	       <div id="search"></div>
-        <li class="bg_lb"> <a href="<?php echo base_url('index.php/tambahpasien') ?>"> <i class="icon-plus"></i>Tambah Pasien</a> </li>
+        <li class="bg_lb"> <a href="<?php echo base_url('index.php/Pegawai/viewTambahPasien') ?>"> <i class="icon-plus"></i>Tambah Pasien</a> </li>
         <li class="bg_lg" data-toggle="modal" data-target = "#myModal"> <a href="#"> <i class="icon-search"></i> Cari Pasien</a> </li>
       </ul>
     </div>
@@ -46,7 +46,7 @@
                Input Kode Pasien
             </h4>
          </div>
-		<form action="<?php echo base_url('index.php/rekammedik') ?>" method="post">
+		<form action="<?php echo base_url('index.php/Pegawai/viewRekamMedikById') ?>" method="post">
          <div class = "modal-body">
             <center><input type="text" name="kd_pasien" placeholder="Kode Pasien" required /></center>
          </div>

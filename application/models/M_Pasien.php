@@ -16,7 +16,7 @@ class M_Pasien extends CI_Model{
 	function tambah_pasien($data,$table){
 		$this->db->insert($table,$data);
 	}
-	
+
 	//max_id untuk tampil saat setelah add
 	function max_id()
 	{
@@ -33,13 +33,12 @@ class M_Pasien extends CI_Model{
 		return $this->db->get();
 	}
 
-    function updatePasien($data, $condition)
-	{
+    function updatePasien($data, $condition){
         //update Pasien
-        $this->db->where($condition);
+    $this->db->where($condition);
 		$this->db->update("tb_pasien", $data);
-    }
-	
+  }
+
 	function pembayaran_pasien($kdPasien)
 	{
 		$this->db->select('id,kode_pasien,id_jenis_pasien,nama_pasien,free_pass');
@@ -47,7 +46,7 @@ class M_Pasien extends CI_Model{
 		$this->db->where('kode_pasien',$kdPasien);
 		return $this->db->get();
 	}
-	
+
 	function getJenisPasien($idJenisPasien){
 
 		$this->db->select("*");
@@ -55,25 +54,25 @@ class M_Pasien extends CI_Model{
 		$this->db->where("id", $idJenisPasien); //select sesuai dengan ID Jenis Pasien
 		return $this->db->get();
 	}
-	
+
 	function getIdPasien($kdPasien){
 		$this->db->select('id');
 		$this->db->where('kode_pasien',$kdPasien);
 		$result = $this->db->get('tb_pasien')->row();
 		return $result->id;
 	}
-	
+
 	function tambahPembayaranPasien($data,$table){
 		$this->db->insert($table,$data);
 	}
-	
+
 	function getRekamPasien($idPasien){
 		$this->db->select_max('id');
 		$this->db->where('id_pasien',$idPasien);
 		$result = $this->db->get('tb_rekam_medik')->row();
 		return $result->id;
 	}
-	
+
 	function updateFreePassPasien($kdPasien){
 		$this->db->where('kode_pasien',$kdPasien);
 		$this->db->update();

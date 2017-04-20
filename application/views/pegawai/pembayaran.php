@@ -49,32 +49,32 @@
           </div>
 
           <div class="widget-content nopadding">
-            <form action="<?php echo base_url('index.php/pembayaran/tambahpembayaran') ?>" method="post" class="form-horizontal">
-			<?php				
+            <form action="<?php echo base_url('index.php/Pegawai/actionTambahPembayaran') ?>" method="post" class="form-horizontal">
+			<?php
 				if($dataPasien != null){
-				foreach ($dataPasien->result() as $row){					
+				foreach ($dataPasien->result() as $row){
 			?>
               <div class="control-group">
-                <label class="control-label">Kode Pasien :</label>
+                <label class="control-label">Kode Pasien</label>
                 <div class="controls">
-                  <input type="text" class="span5" value="<?= $row->kode_pasien ?>" name="kd_pasien" readonly />                  
+                  <input type="text" class="span5" value="<?= $row->kode_pasien ?>" name="kd_pasien" readonly />
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">Nama Pasien :</label>
+                <label class="control-label">Nama Pasien</label>
                 <div class="controls">
                   <input type="text" class="span8" value="<?= $row->nama_pasien ?>" name="nama_pasien" readonly />
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">Untuk Pembayaran :</label>
+                <label class="control-label">Untuk Pembayaran</label>
                 <div class="controls">
                   <input type="text" class="span8" name="ket_pembayaran"/>
                 </div>
               </div>
               <div class="control-group">
-			  <?php 
-				if($row->free_pass > 0){
+			  <?php
+				if($row->free_pass == 0){
 					$selected = 'selected';
 			  ?>
                 <label class="control-label">Jenis Pembayaran :</label>
@@ -86,7 +86,7 @@
                   </select>
                 </div>
               </div>
-				<?php } 
+				<?php }
 					$jmlRegio = 0;
 				?>
               <div class="control-group">
@@ -101,7 +101,7 @@
 					alert(x);
 				}
 			  </script>
-			  <?php 
+			  <?php
 				$bayarRegio = $jmlRegio * 25000;
 				if($row->id_jenis_pasien == 1){
 					$jenisBayar = 200000 + $bayarRegio;
