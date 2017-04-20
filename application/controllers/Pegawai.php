@@ -33,5 +33,5 @@ class Pegawai extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->view('pegawai/home.php');
 	}
-
+	
 }

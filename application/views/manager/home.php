@@ -4,6 +4,14 @@
 <title>Physiopreneur</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="<?php echo base_url()?>css/bootstrap.min.css" />
+<link rel="stylesheet" href="<?php echo base_url()?>css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" href="<?php echo base_url()?>css/fullcalendar.css" />
+<link rel="stylesheet" href="<?php echo base_url()?>css/matrix-style.css" />
+<link rel="stylesheet" href="<?php echo base_url()?>css/matrix-media.css" />
+<link href="<?php echo base_url()?>font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link rel="stylesheet" href="<?php echo base_url()?>css/jquery.gritter.css" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 <body>
 
 <?php include 'header.php';?>
@@ -25,7 +33,7 @@
       <ul class="quick-actions">
 	       <div id="search"></div>
         <li class="bg_lb"> <a href="<?php echo base_url('index.php/tambahpegawai') ?>"> <i class="icon-plus"></i>Tambah Pegawai</a> </li>
-        <li class="bg_lg" data-toggle = "modal" data-target = "#myModal"> <a href="#"> <i class="icon-search"></i> Cari Pasien</a> </li>
+        <li class="bg_lg" data-toggle = "modal" data-target = "#myModal"> <a href="#"> <i class="icon-search"></i> Cari Pegawai</a> </li>
       </ul>
     </div>
 <!--End-Action boxes-->
@@ -84,36 +92,16 @@
 <!--end-main-container-part-->
 
 <!--Footer-part-->
-
-
-
+<div class="row-fluid">
+  <div id="footer" class="span12"> 2013 &copy; Matrix Admin. Brought to you by <a href="http://themedesigner.in">Themedesigner.in</a> </div>
+</div>
 <!--end-Footer-part-->
-
-
-
-<script type="text/javascript">
-  // This function is called from the pop-up menus to transfer to
-  // a different page. Ignore if the value returned is a null string:
-  function goPage (newURL) {
-
-      // if url is empty, skip the menu dividers and reset the menu selection to default
-      if (newURL != "") {
-
-          // if url is "-", it is this page -- reset the menu:
-          if (newURL == "-" ) {
-              resetMenu();
-          }
-          // else, send page to designated URL
-          else {
-            document.location.href = newURL;
-          }
-      }
-  }
-
-// resets the menu selection upon entry to this page:
-function resetMenu() {
-   document.gomenu.selector.selectedIndex = 2;
-}
-</script>
+<script src="<?php echo base_url()?>js/jquery.min.js"></script>
+<script src="<?php echo base_url()?>js/jquery.ui.custom.js"></script>
+<script src="<?php echo base_url()?>js/bootstrap.min.js"></script>
+<script src="<?php echo base_url()?>js/jquery.peity.min.js"></script>
+<script src="<?php echo base_url()?>js/matrix.js"></script>
+<script src="<?php echo base_url()?>js/matrix.interface.js"></script>
+<script src="<?php echo base_url()?>js/matrix.popover.js"></script>
 </body>
 </html>

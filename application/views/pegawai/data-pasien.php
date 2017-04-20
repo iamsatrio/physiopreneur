@@ -26,7 +26,6 @@
   <?php
     $jumlahPasien = $listPasien->num_rows();
     if($jumlahPasien ==0 ){
-
   ?>
   <!--Kalau kosong, kita harus melakukan add pasien-->
   <a href="<?= base_url() ?> index.php/pegawai/tambahpasien">Tambah Pasien</a>
@@ -50,26 +49,30 @@
                       <th>No.</th>
                       <th>Nama</th>
                       <th>Alamat</th>
-                      <th>ID Pasien</th>
+                      <th>No.HP</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
                 <?php
                   //Kita akan melakukan looping sesuai dengan data yg dimiliki
-                  $nomor = 0; //untuk pengisian nomor
+                  $nomor = 1; //untuk pengisian nomor
                   foreach ($listPasien->result() as $row){
                 ?>
                   <tr>
-                    <td><center><?= $nomor ?></center></td>
+                    <td><center><?= $nomor++ ?></center></td>
                     <td><?= $row->nama_pasien ?></td>
                     <td><?= $row->alamat ?></td>
-                    <td><?= $row->id?></td>
+                    <td><?= $row->no_hp ?></td>
                     <td>
                       <center>
                         <!--akan masuk ke rekam medik-->
-                        <a href="<?php echo base_url() ?>index.php/rekammedik">
+                        <a href="<?php echo base_url() ?>index.php/rekammedik/tampilPasien/<?= $row->id?>">
                           <button class="btn btn-primary"><i class="icon icon-search"></i> Details</button>
+                        </a>
+                        <!--lanjutkan lagi ya-->
+                        <a href="<?php echo base_url() ?>index.php/updatePasien/tampilPasien/<?= $row->id?>">
+                          <button class="btn btn-primary"><i class="icon icon-refresh"></i> Update</button>
                         </a>
                       </center>
                     </td>
@@ -85,13 +88,22 @@
     </div>
   </div>
 </div>
-       <?php         
-        }  
+       <?php
+        }
       ?>
 
 <!--Footer-part-->
 <div class="row-fluid">
   <div id="footer" class="span12"> 2013 &copy; Matrix Admin. Brought to you by <a href="http://themedesigner.in">Themedesigner.in</a> </div>
 </div>
+<!--end-Footer-part-->
+<script src="<?php echo base_url() ?>js/jquery.min.js"></script>
+<script src="<?php echo base_url() ?>js/jquery.ui.custom.js"></script>
+<script src="<?php echo base_url() ?>js/bootstrap.min.js"></script>
+<script src="<?php echo base_url() ?>js/jquery.uniform.js"></script>
+<script src="<?php echo base_url() ?>js/select2.min.js"></script>
+<script src="<?php echo base_url() ?>js/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url() ?>js/matrix.js"></script>
+<script src="<?php echo base_url() ?>js/matrix.tables.js"></script>
 </body>
 </html>

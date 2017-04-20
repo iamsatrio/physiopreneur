@@ -29,28 +29,28 @@
 
         <div class="span4">
           <div class="span4"></div>
-          <?php foreach ($listRekam as $data){ ?>
-              <label class="control-label">ID Pasien &nbsp; : &nbsp;<?php echo $this->$data->id; ?> </label>
-              <label class="control-label">Nama Pasien &nbsp; : &nbsp; </label>
-          <?php }?>
+          <?php foreach ($rekamMedik->result() as $data){ ?>
+              <label class="control-label">ID Pasien &nbsp; : &nbsp;<?= $data->id; ?> </label>
+              <label class="control-label">Nama Pasien &nbsp; : &nbsp;<?= $data->nama_pasien; ?> </label>
         </div>
 
         <div class="span4">  </div>
 
         <div class="span4">
-          <img src="img/patient.png" alt="" style="width:100px; height:100px;">
+        <img src="<?php echo base_url() ?>asset/foto_pasien/<?=$data->foto?>" alt="<?=$data->foto?>" style="width:100px; height:100px;"/>
         </div>
         <div class="span4"></div>
         <div class="span4">
           <div class="span3"></div>
-            <a href="tambah-keluhan-tindakan.php">
-              <button class="btn btn-info"><i class="icon icon-plus"></i> Rekam Medik</button>
+            <a href="<?php echo base_url() ?>index.php/tambahrekammedik">
+              <button class="btn btn-info"><i class="icon icon-plus"></i>Rekam Medik</button>
             </a>
         </div>
 
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
-            <h5>Rekam Medik - Satrio</h5>
+            <h5>Rekam Medik - <?= $data->nama_pasien; ?></h5>
+        <?php }?>
           </div>
           <div class="widget-content nopadding">
             <table class="table table-bordered data-table">
@@ -63,24 +63,17 @@
                 </tr>
               </thead>
               <tbody>
+                <?php 
+                  $jumlahRekamMedik = $medik->num_rows();
+                  if ($jumlahRekamMedik > 0) {
+                  foreach ($medik->result() as $data){ ?>
                 <tr>
-                  <td>2 Maret 2017</td>
-                  <td>Sakit Pinggang</td>
-                  <td>Tens/ES</td>
-                  <td class="center">Zona</td>
+                  <td><?= $data->tanggal  ?></td>
+                  <td><?= $data->diagnosa  ?></td>
+                  <td><?= $data->tindakan  ?></td>
+                  <td class="center"><?= $data->nama  ?></td>
                 </tr>
-                <tr>
-                  <td>10 Maret 2017</td>
-                  <td></td>
-                  <td>Functional Exercise</td>
-                  <td class="center">Zona</td>
-                </tr>
-                <tr>
-                  <td>15 Maret 2017</td>
-                  <td></td>
-                  <td>Functional Exercise, Infrared</td>
-                  <td class="center">Zona</td>
-                </tr>
+                <?php }} ?>
 
               </tbody>
             </table>

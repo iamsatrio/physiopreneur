@@ -4,7 +4,12 @@
 <title>Tambah Pasien - Physiopreneur</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+<link rel="stylesheet" href="<?php echo base_url()?>css/bootstrap.min.css" />
+<link rel="stylesheet" href="<?php echo base_url()?>css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" href="<?php echo base_url()?>css/matrix-style.css" />
+<link rel="stylesheet" href="<?php echo base_url()?>css/matrix-media.css" />
+<link href="<?php echo base_url()?>font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
 </head>
 <body>
 
@@ -112,5 +117,13 @@
   <div id="footer" class="span12"> 2013 &copy; Matrix Admin. Brought to you by <a href="http://themedesigner.in">Themedesigner.in</a> </div>
 </div>
 <!--End-Footer-part-->
+<!-- JS part -->
+<script src="<?php echo base_url()?>js/jquery.min.js"></script>
+<script src="<?php echo base_url()?>js/jquery.ui.custom.js"></script>
+<script src="<?php echo base_url()?>js/bootstrap.min.js"></script>
+<script src="<?php echo base_url()?>js/jquery.peity.min.js"></script>
+<script src="<?php echo base_url()?>js/matrix.js"></script>
+<script src="<?php echo base_url()?>js/matrix.interface.js"></script>
+<script src="<?php echo base_url()?>js/matrix.popover.js"></script>
 </body>
 </html>

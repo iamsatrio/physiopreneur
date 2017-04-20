@@ -70,7 +70,7 @@
                 </div>
               </div>
               <div class="form-actions">
-                      <span class="pull-right"><a type="submit" href="rekam-medik.php" class="btn btn-success" /> Simpan</a></span>
+                      <span class="pull-right"><a type="submit" href="<?php echo base_url()?>index.php/tambahrekammedik" class="btn btn-success" /> Simpan</a></span>
               </div>
             </div>
           </div>

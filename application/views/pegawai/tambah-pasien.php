@@ -49,7 +49,7 @@
             <h5>Data Diri Pasien</h5>
           </div>
           <div class="widget-content nopadding">
-            <form action="<?php echo base_url('index.php/tambahpasien/tambah_pasien') ?>" method="post" class="form-horizontal">
+            <form action="<?php echo base_url('index.php/tambahpasien/tambah_pasien') ?>" method="post" enctype="multipart/form-data" class="form-horizontal"	>
 			  <div class="control-group">
                 <label class="control-label">Tipe Pasien :</label>
                 <div class="controls">
@@ -93,11 +93,12 @@
               <div class="control-group">
                 <label class="control-label">Foto :</label>
                 <div class="controls">
-                  <input type="file" class="span11" />
+                 <input type="file" class="span11" name="fotoPasien" required />
                 </div>
               </div>
               <div class="form-actions">
-                <button class="btn btn-success">Simpan</button>
+                <input type="submit" class="btn btn-success" value="Simpan"/>
+                <!--<button class="btn btn-success">Simpan</button>-->
               </div>
             </form>
           </div>
