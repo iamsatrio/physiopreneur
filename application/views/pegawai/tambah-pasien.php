@@ -14,26 +14,6 @@
 <?php include 'navbar.php';?>
 <!--sidebar-menu-->
 
-<!--main-container-part
-<div id="content">
-<!--breadcrumbs
-  <div id="content-header">
-    <div id="breadcrumb"></div>
-  </div>
-<!--End-breadcrumbs-->
-
-<!--close-top-Header-menu-->
-<!--start-top-serch-->
-
-<!--close-top-serch-->
-<!--sidebar-menu-->
-<!--<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
-  <ul>
-    <li><a href="index.html"><i class="icon icon-plus-sign"></i> <span>Pendaftaran</span></a> </li>
-    <li><a href="data-pasien.html"><i class="icon icon-book"></i> <span>Data Pasien</span></a> </li>
-    <li><a href="pembayaran.html"><i class="icon icon-book"></i> <span>Pembayaran</span></a> </li>
-  </ul>
-</div>-->
 <!--main-container-part-->
 <div id="content">
   <div id="content-header">
@@ -49,21 +29,21 @@
             <h5>Data Diri Pasien</h5>
           </div>
           <div class="widget-content nopadding">
-            <form action="<?php echo base_url('index.php/tambahpasien/tambah_pasien') ?>" method="post" enctype="multipart/form-data" class="form-horizontal"	>
+            <form action="<?php echo base_url('index.php/Pegawai/actionTambahPasien') ?>" method="post" enctype="multipart/form-data" class="form-horizontal"	>
 			  <div class="control-group">
                 <label class="control-label">Tipe Pasien :</label>
                 <div class="controls">
-                  <select class="span11" name="tipe" required>
-					<option value="#">---Pilih---</option>
+                  <select required class="span11" name="tipe">
+					<option value="">---Pilih---</option>
 					<option value="1">Pelajar</option>
 					<option value="2">Umum</option>
 				  </select>
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">ID Pasien :</label>
+                <label class="control-label">Kode Pasien :</label>
                 <div class="controls">
-                  <input type="text" class="span11" disabled="" value="12345" name="idPasien"/>
+                  <input type="text" class="span11" value="<?php echo $genKdPasien; ?>" name="kdPasien" readonly/>
                 </div>
               </div>
               <div class="control-group">

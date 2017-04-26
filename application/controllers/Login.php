@@ -27,7 +27,7 @@ class Login extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->helper('url');
+		//$this->load->helper('url');
 		$this->load->view('login.php');
 	}
 
@@ -41,13 +41,16 @@ class Login extends CI_Controller {
 				$session_data['username'] = $data->username;
 				$session_data['role_id'] = $data->id_role;
 				$session_data['status'] = 1;
+				$session_data['lokasi_id'] = $data->id_lokasi;
 				$this->session->set_userdata($session_data);
 			}
-			
+
 			if ($session_data['role_id']==1) {
 				redirect(base_url('index.php/manager'));
 			} else if ($session_data['role_id']==2) {
 				redirect(base_url('index.php/pegawai'));
+			} else if ($session_data['role_id']==3) {
+				redirect(base_url('index.php/superadmin'));
 			}
 
 		}else{
@@ -58,8 +61,9 @@ class Login extends CI_Controller {
 	}
 
 	function action_logout(){
-		$this->session->sess_destroy();
 		$session_data['status'] = 0;
+		$this->session->set_userdata($session_data);
+		$this->session->sess_destroy();
 		redirect(base_url());
 	}
 }
