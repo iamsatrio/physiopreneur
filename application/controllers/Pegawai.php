@@ -136,14 +136,14 @@ class Pegawai extends CI_Controller {
 		//action update pasien
 		public function actionUpdatePasien(){
         $data = array (
-            'id' => $this->input->post('idPasien'),
+            'kode_pasien' => $this->input->post('idPasien'),
             'id_jenis_pasien'  => $this->input->post('tipe'),
             'nama_pasien' =>$this->input->post('namaPasien'),
             'tanggal_lahir' => $this->input->post('tglLahir'),
             'no_hp' => $this->input->post('noHP'),
             'alamat' =>  $this->input->post('alamat')
         );
-        $condition['id'] = $this->input->post('id');
+        $condition['kode_pasien'] = $this->input->post('idPasien');
         $this->m_pasien->updatePasien($data, $condition);
 				
 				$message = "Data pasien pasien " . $kdPasien." berhasil diupdate";

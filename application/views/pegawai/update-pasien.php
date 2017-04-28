@@ -32,16 +32,25 @@
             <form action="<?php echo base_url('index.php/Pegawai/actionUpdatePasien') ?>" method="post" class="form-horizontal">
 			      <div class="control-group">
                 <label class="control-label">Tipe Pasien</label>
-                <div class="controls">
+                <div class="controls">					
                   <select class="span11" name="tipe" required>
-            					<option value="<?=$data->id_jenis_pasien?>"><?=$data->id_jenis_pasien?></option>
-        				  </select>
+				  <?php $selected = "";
+				  $selected1 = "";
+					if($data->id_jenis_pasien == 1){
+						$selected = "selected";
+					}else if($data->id_jenis_pasien == 2){
+						$selected1 = "selected";
+					}
+					?>
+            			<option value="1" <?= $selected ?> >Pelajar</option>
+						<option value="2" <?= $selected1 ?> >Umum</option>
+        			</select>
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label">Kode Pasien</label>
                 <div class="controls">
-                  <input type="text" class="span11" disabled="" value="<?=$data->kode_pasien?>" name="idPasien"/>
+                  <input type="text" class="span11" value="<?=$data->kode_pasien?>" name="idPasien" readonly />
                 </div>
               </div>
               <div class="control-group">
