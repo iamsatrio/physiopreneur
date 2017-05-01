@@ -22,54 +22,88 @@
       <h1>Laporan</h1>
     </div>
   <!--End-breadcrumbs-->
-  <!-- <div class="container-fluid">
-    <hr>
-    <div class="row-fluid">
-      <div class="span10">
-        <div class="span2"></div>
-
-        <div class="span5">
-            <label class="control-label">Tanggal:&nbsp; 3/2/2017</label>
-        </div>
-
-        <div class="span3">
-              <label class="control-label">Physioterapist:&nbsp; Zona</label>
-        </div>
-
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-            <h5>Pasien : Satrio Wibowo</h5>
-          </div>
-
-          <div class="widget-content nopadding">
-
-            <form action="#" method="get" class="form-horizontal">
-  		        <div class="control-group">
-                <label class="control-label">Keluhan</label>
-                <div class="controls">
-                  <textarea class="span11" ></textarea>
-                </div>
-              </div>
-  			      <div class="control-group">
-                <label class="control-label">Tindakan</label>
-                <div class="controls">
-                  <textarea class="span11" ></textarea>
-                </div>
-              </div>
-              <div class="form-actions">
-                      <span class="pull-right"><a type="submit" href="rekam-medik.php" class="btn btn-success" /> Simpan</a></span>
-              </div>
+  <center>
+    <div class="control-group">
+        <label for="checkboxes" class="control-label"><b>Pilih Jenis Laporan</b></label>
+        <div class="controls">
+            <div data-toggle="buttons-radio" class="btn-group">
+              <button class="btn btn-success" type="button" name="btn_keuangan" onclick="showKeuangan()">Laporan Keuangan</button>
+              <button class="btn btn-primary" type="button" name="btn_pasien" onclick="showPasien()">Laporan Pasien</button>
             </div>
-          </div>
+        </div>
+    </div>
+  </center>
+
+  <div class="container-fluid" id="keuangan" style="display:block;">
+      <hr>
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="widget-box">
+            <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+              <h5>Laporan Keuangan</h5>
+            </div>
+            <div class="widget-content nopadding">
+              <table class="table table-bordered data-table">
+                <thead>
+                  <tr>
+                    <th>No.</th>
+                    <th>Tanggal</th>
+                    <th>Penghasilan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+          </table>
         </div>
       </div>
-    </div> -->
+    </div>
+  </div>
+  </div>
+
+
+  <div class="container-fluid" id="pasien" style="display:none;">
+      <hr>
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="widget-box">
+            <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+              <h5>Laporan Pasien</h5>
+            </div>
+            <div class="widget-content nopadding">
+              <table class="table table-bordered data-table">
+                <thead>
+                  <tr>
+                    <th>No.</th>
+                    <th>Nama Pasien</th>
+                    <th>Alamat</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
 </div>
 <!--Footer-part-->
 
 <!--end-Footer-part-->
 <script>
 	$('.textarea_editor').wysihtml5();
+
+  function showKeuangan() {
+   document.getElementById('keuangan').style.display = "block";
+   document.getElementById('pasien').style.display = "none";
+  }
+
+  function showPasien() {
+   document.getElementById('keuangan').style.display = "none";
+   document.getElementById('pasien').style.display = "block";
+  }
+
 </script>
 </body>
 </html>

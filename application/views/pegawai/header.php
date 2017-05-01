@@ -26,7 +26,7 @@
   <ul class="nav">
     <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Welcome <?php echo $this->session->userdata("username"); ?></span><b class="caret"></b></a>
       <ul class="dropdown-menu">
-        <li><a href="#"><i class="icon-user"></i> My Profile</a></li>
+        <li><a href="<?php echo base_url() ?>index.php/pegawai/viewProfilePegawai/<?= $this->session->userdata('username')?>"><i class="icon-user"></i> My Profile</a></li>
       </ul>
     </li>
 
@@ -47,6 +47,7 @@
 <script src="<?php echo base_url() ?>js/matrix.js"></script>
 <script src="<?php echo base_url() ?>js/matrix.dashboard.js"></script>
 <script src="<?php echo base_url() ?>js/jquery.gritter.min.js"></script>
+<script src="<?php echo base_url() ?>js/matrix.form_common.js"></script>
 <script src="<?php echo base_url() ?>js/matrix.interface.js"></script>
 <script src="<?php echo base_url() ?>js/matrix.chat.js"></script>
 <script src="<?php echo base_url() ?>js/jquery.validate.js"></script>

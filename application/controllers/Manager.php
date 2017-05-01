@@ -108,4 +108,15 @@ class Manager extends CI_Controller {
 
 	}
 
+	//menampilkan halaman profile pegawai
+	public function viewProfileManager($username){
+		$profilePegawai = $this->m_pegawai->tampil_profile_pegawai($username);
+		$lokasiAll = $this->m_pegawai->allLokasi();
+		 $this->load->view('manager/profile.php', array(
+			 'profilePegawai' => $profilePegawai,
+			 'lokasiAll' => $lokasiAll,
+
+		 ));
+	}
+
 }

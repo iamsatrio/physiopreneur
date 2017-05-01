@@ -31,6 +31,14 @@ class M_Pegawai extends CI_Model{
 		return $this->db->get();
 	}
 
+	function tampil_profile_pegawai($username){
+		$this->db->from('tb_pegawai');
+    $this->db->join('tb_lokasi','tb_pegawai.id_lokasi = tb_lokasi.id');
+		$this->db->join('tb_user','tb_pegawai.id_user = tb_user.id');
+		$this->db->where('tb_user.username',$username);
+		return $this->db->get();
+	}
+
 	function data_pegawai($id){
 		$this->db->select('nama');
         $this->db->from('tb_pegawai');
@@ -51,8 +59,22 @@ class M_Pegawai extends CI_Model{
 	function getPegawai($idPegawai){
 		$this->db->select("*");
 		$this->db->from("tb_pegawai");
-		$this->db->where("id", $idPegawai); //select sesuai dengan ID Pasien
+		$this->db->where("id", $idPegawai); //select sesuai dengan ID pegawai
 		return $this->db->get();
+	}
+
+	function allLokasi(){
+		$this->db->select("*");
+		$this->db->from("tb_lokasi");
+		return $this->db->get();
+	}
+
+	function lokasiPegawai($idPegawai){
+		$this->db->select("*");
+		$this->db->from("tb_pegawai");
+		$this->db->where("id", $idPegawai); //select sesuai dengan ID pegawai
+		return $this->db->get();
+
 	}
 
 }
