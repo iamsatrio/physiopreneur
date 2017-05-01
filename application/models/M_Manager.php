@@ -42,11 +42,10 @@ class M_Manager extends CI_Model{
 		return $this->db->get();
 	}
 
-    function update_manager($data, $condition)
-	{
-        $this->db->where($condition);
+  function update_manager($data, $condition){
+    $this->db->where($condition);
 		$this->db->update("tb_manager", $data);
-    }
+  }
 
 }
 
