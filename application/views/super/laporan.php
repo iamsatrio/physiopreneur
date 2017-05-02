@@ -19,51 +19,37 @@
   <!--breadcrumbs-->
     <div id="content-header">
       <div id="breadcrumb"></div>
-      <h1>Laporan</h1>
+      <h1>Laporan Log User</h1>
     </div>
   <!--End-breadcrumbs-->
-  <!-- <div class="container-fluid">
+  <div class="container-fluid">
     <hr>
     <div class="row-fluid">
-      <div class="span10">
-        <div class="span2"></div>
-
-        <div class="span5">
-            <label class="control-label">Tanggal:&nbsp; 3/2/2017</label>
-        </div>
-
-        <div class="span3">
-              <label class="control-label">Physioterapist:&nbsp; Zona</label>
-        </div>
-
+      <div class="span12">
         <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-            <h5>Pasien : Satrio Wibowo</h5>
+          <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+            <h5>Data Log User</h5>
           </div>
-
           <div class="widget-content nopadding">
-
-            <form action="#" method="get" class="form-horizontal">
-  		        <div class="control-group">
-                <label class="control-label">Keluhan</label>
-                <div class="controls">
-                  <textarea class="span11" ></textarea>
-                </div>
-              </div>
-  			      <div class="control-group">
-                <label class="control-label">Tindakan</label>
-                <div class="controls">
-                  <textarea class="span11" ></textarea>
-                </div>
-              </div>
-              <div class="form-actions">
-                      <span class="pull-right"><a type="submit" href="rekam-medik.php" class="btn btn-success" /> Simpan</a></span>
-              </div>
-            </div>
+            <table class="table table-bordered data-table">
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Tanggal</th>
+                  <th>IP Address</th>
+                  <th>Browser</th>
+                  <th>Device</th>
+                  <th>Action</th> <!--login / logout-->
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
+  </div>
 </div>
 <!--Footer-part-->
 

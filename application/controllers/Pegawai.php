@@ -133,6 +133,17 @@ class Pegawai extends CI_Controller {
        ));
     }
 
+		//menampilkan halaman profile pegawai
+		public function viewProfilePegawai($username){
+      $profilePegawai = $this->m_pegawai->tampil_profile_pegawai($username);
+			$lokasiAll = $this->m_pegawai->allLokasi();
+       $this->load->view('pegawai/profile.php', array(
+         'profilePegawai' => $profilePegawai,
+				 'lokasiAll' => $lokasiAll,
+
+       ));
+    }
+
 		//action update pasien
 		public function actionUpdatePasien(){
         $data = array (
@@ -145,7 +156,7 @@ class Pegawai extends CI_Controller {
         );
         $condition['kode_pasien'] = $this->input->post('idPasien');
         $this->m_pasien->updatePasien($data, $condition);
-				
+
 				$message = "Data pasien pasien " . $kdPasien." berhasil diupdate";
 			 	echo "<script type='text/javascript'>alert('$message');</script>";
         redirect(base_url('index.php/Pegawai/viewDataPasien'));

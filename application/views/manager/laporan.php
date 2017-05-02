@@ -22,54 +22,129 @@
       <h1>Laporan</h1>
     </div>
   <!--End-breadcrumbs-->
-  <!-- <div class="container-fluid">
-    <hr>
-    <div class="row-fluid">
-      <div class="span10">
-        <div class="span2"></div>
-
-        <div class="span5">
-            <label class="control-label">Tanggal:&nbsp; 3/2/2017</label>
-        </div>
-
-        <div class="span3">
-              <label class="control-label">Physioterapist:&nbsp; Zona</label>
-        </div>
-
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-            <h5>Pasien : Satrio Wibowo</h5>
-          </div>
-
-          <div class="widget-content nopadding">
-
-            <form action="#" method="get" class="form-horizontal">
-  		        <div class="control-group">
-                <label class="control-label">Keluhan</label>
-                <div class="controls">
-                  <textarea class="span11" ></textarea>
-                </div>
-              </div>
-  			      <div class="control-group">
-                <label class="control-label">Tindakan</label>
-                <div class="controls">
-                  <textarea class="span11" ></textarea>
-                </div>
-              </div>
-              <div class="form-actions">
-                      <span class="pull-right"><a type="submit" href="rekam-medik.php" class="btn btn-success" /> Simpan</a></span>
-              </div>
+  <center>
+    <div class="control-group">
+        <label for="checkboxes" class="control-label"><b>Pilih Jenis Laporan Berdasarkan</b></label>
+        <div class="controls">
+            <div data-toggle="buttons-radio" class="btn-group">
+              <button class="btn btn-success" type="button" name="btn_minggu" onclick="showMinggu()">Mingguan</button>
+              <button class="btn btn-primary" type="button" name="btn_bulan" onclick="showBulan()">Bulanan</button>
+              <button class="btn btn-danger" type="button" name="btn_tahun" onclick="showTahun()">Tahunan</button>
             </div>
-          </div>
+        </div>
+    </div>
+  </center>
+
+  <div class="container-fluid" id="minggu" style="display:block;">
+      <hr>
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="widget-box">
+            <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+              <h5>Laporan Per Minggu</h5>
+            </div>
+            <div class="widget-content nopadding">
+              <table class="table table-bordered data-table">
+                <thead>
+                  <tr>
+                    <th>No.</th>
+                    <th>Tanggal</th>
+                    <th>Cabang</th>
+                    <th>Penghasilan</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+          </table>
         </div>
       </div>
-    </div> -->
+    </div>
+  </div>
+  </div>
+
+
+  <div class="container-fluid" id="bulan" style="display:none;">
+      <hr>
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="widget-box">
+            <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+              <h5>Laporan Per Bulan</h5>
+            </div>
+            <div class="widget-content nopadding">
+              <table class="table table-bordered data-table">
+                <thead>
+                  <tr>
+                    <th>No.</th>
+                    <th>Tanggal</th>
+                    <th>Cabang</th>
+                    <th>Penghasilan</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="container-fluid" id="tahun" style="display:none;">
+      <hr>
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="widget-box">
+            <div class="widget-title"> <span class="icon"><i class="icon-th"></i></span>
+              <h5>Laporan Per Tahun</h5>
+            </div>
+            <div class="widget-content nopadding">
+              <table class="table table-bordered data-table">
+                <thead>
+                  <tr>
+                    <th>No.</th>
+                    <th>Tanggal</th>
+                    <th>Cabang</th>
+                    <th>Penghasilan</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
 </div>
 <!--Footer-part-->
 
 <!--end-Footer-part-->
 <script>
 	$('.textarea_editor').wysihtml5();
+
+  function showMinggu() {
+   document.getElementById('minggu').style.display = "block";
+   document.getElementById('bulan').style.display = "none";
+   document.getElementById('tahun').style.display = "none";
+  }
+
+  function showBulan() {
+    document.getElementById('minggu').style.display = "none";
+    document.getElementById('bulan').style.display = "block";
+    document.getElementById('tahun').style.display = "none";
+  }
+
+  function showTahun() {
+    document.getElementById('minggu').style.display = "none";
+    document.getElementById('bulan').style.display = "none";
+    document.getElementById('tahun').style.display = "block";
+  }
+
 </script>
 </body>
 </html>

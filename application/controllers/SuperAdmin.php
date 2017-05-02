@@ -5,6 +5,7 @@ class SuperAdmin extends CI_Controller {
     function __construct(){
         parent::__construct();
         $this->load->model('m_manager');
+        $this->load->model('m_tarif');
     }
 
     function index()
@@ -25,6 +26,15 @@ class SuperAdmin extends CI_Controller {
         'dataManager' => $dataManager
      ));
     }
+
+
+    public function tampilDataTarif(){
+      $dataTarif = $this->m_tarif->tampil_tarif();
+      $this->load->view('super/data-tarif.php', array(
+        'dataTarif' => $dataTarif
+     ));
+    }
+
 
     public function tambahManager()
   	{
@@ -74,6 +84,16 @@ class SuperAdmin extends CI_Controller {
          'dataManager' => $dataManager
        ));
       //$this->load->view('pegawai/rekam-medik.php',$medik);
+    }
+
+    //menampilkan halaman profile pegawai
+		public function tambahTarif(){
+			$lokasiAll = $this->m_tarif->allLokasi();
+      $pembayaranAll = $this->m_tarif->allJenisPembayaran();
+       $this->load->view('super/tambah-tarif.php', array(
+				 'lokasiAll' => $lokasiAll,
+         'pembayaranAll' => $pembayaranAll
+       ));
     }
 
 }
