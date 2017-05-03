@@ -250,14 +250,17 @@ class Pegawai extends CI_Controller {
 
 	//menampilkan data pasien
 	public function viewPembayaran(){
-		$id = $this->session->userdata("id");
+		$id = $this->session->userdata("id");		
 		$dataPegawai = $this->m_pegawai->data_pegawai($id);
 		$kdPasien = $this->input->post('kd_pasien');
-      $dataPasien = $this->m_pasien->pembayaran_pasien($kdPasien);
+		$dataPasien = $this->m_pasien->pembayaran_pasien($kdPasien);
+		$idLokasi = $this->session->userdata("lokasi_id");
+		$dataTarif = $this->m_pasien->getTarifAwal($idLokasi);
 	  	if($dataPasien->num_rows() > 0){
 		  		$this->load->view('pegawai/pembayaran.php', array(
          	'dataPasien' => $dataPasien,
-		 	 		'dataPegawai' => $dataPegawai
+		 	 		'dataPegawai' => $dataPegawai,
+					'dataTarif' => $dataTarif
        		));
 	  	}else{
 		  	$message = "Maaf, tidak ada data pasien dengan kode pasien " . $kdPasien;
@@ -265,7 +268,15 @@ class Pegawai extends CI_Controller {
 				redirect('index.php/pegawai', 'refresh');
 	  	}
     }
-
+	
+	//menampilkan tarif
+	public function getTarif(){
+		$idLokasi = $this->session->userdata("lokasi_id");
+		$idJenisPembayaran = $this->input->post('jenis_pembayaran');
+		$dataTarif = $this->m_pasien->getTarifBasedLocation($idLokasi,$idJenisPembayaran);
+		//print form_input('total_bayar',$dataTarif);
+		print $dataTarif;
+	}
 
 	//action tambah pembayaran
 	public function actionTambahPembayaran(){
@@ -278,12 +289,15 @@ class Pegawai extends CI_Controller {
 		$kdPasien = $this->input->post('kd_pasien');
 		$idPasien = $this->m_pasien->getIdPasien($kdPasien);
 		$idRekam = $this->m_pasien->getRekamPasien($idPasien);
+		$jmlFreePass = $this->m_pasien->getFreePassPasien($kdPasien);
 		if($jenisPembayaran == 1){
-
+			$jmlFreePass = $jmlFreePass + 0;
 		}else if($jenisPembayaran == 2){
-
+			$jmlFreePass = $jmlFreePass + 5;
 		}else if($jenisPembayaran == 3){
-
+			$jmlFreePass = $jmlFreePass + 10;
+		}else if($jenisPembayaran == 4){
+			$jmlFreePass = $jmlFreePass - 1;
 		}
 		$data = array(
 			'tanggal'  => $tanggal,
@@ -295,6 +309,10 @@ class Pegawai extends CI_Controller {
 			'id_rekam_medik' => $idRekam
 		);
 		$this->m_pasien->tambahPembayaranPasien($data,'tb_pembayaran');
+		$updateData = array(
+			'free_pass' => $jmlFreePass
+		);
+		$this->m_pasien->updateFreePassPasien($updateData,$kdPasien);
 		$message = "Pembayaran Sukses";
 		echo "<script type='text/javascript'>alert('$message');</script>";
 		redirect(base_url('index.php/pegawai'));

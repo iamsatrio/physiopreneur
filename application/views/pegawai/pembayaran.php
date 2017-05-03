@@ -69,50 +69,52 @@
               <div class="control-group">
                 <label class="control-label">Untuk Pembayaran</label>
                 <div class="controls">
-                  <input type="text" class="span8" name="ket_pembayaran"/>
+                  <input type="text" class="span8" name="ket_pembayaran" value="<?= $row->diagnosa ?>" />
                 </div>
-              </div>
-              <div class="control-group">
+              </div>              
 			  <?php
 				if($row->free_pass == 0){
-					$selected = 'selected';
+					foreach ($dataTarif->result() as $row){
+						$jumlahTarif = $row->tarif;
+					}
 			  ?>
+			  <div class="control-group">
                 <label class="control-label">Jenis Pembayaran :</label>
-                <div class="controls">
-                  <select required class="span2" name="jenis_pembayaran">
-                    <option value="1" <?php echo $selected; ?>>Single Visit</option>
-                    <option value="2" >5 Cares</option>
+                <div id="combox" class="controls" >
+                  <select required class="span2" name="jenis_pembayaran" id="jenis_pembayaran">
+                    <option value="1">Single Visit</option>
+                    <option value="2">5 Cares</option>
                     <option value="3">10 Cares</option>
                   </select>
+				  <input type="hidden" name="totalAwal" id="totalAwal" value="<?= $jumlahTarif ?>"/>
                 </div>
               </div>
-				<?php }
+				<?php }else{
+					$jumlahTarif = 0;
+					?>
+				<div class="control-group">
+                <label class="control-label">Jenis Pembayaran :</label>
+                <div class="controls">
+                  <select class="span2" name="jenis_pembayaran" readonly>
+                    <option value="4">Free</option>
+                  </select>
+				  <input type="hidden" name="totalAwal" id="totalAwal" value="<?= $jumlahTarif ?>"/>
+                </div>
+              </div>
+				<?php }	
 					$jmlRegio = 0;
-				?>
+				?>				
               <div class="control-group">
                 <label class="control-label"> + Regio :</label>
-                <div class="controls">
-                  <input type="number" min="0" class="span1" value="<?= $jmlRegio ?>" name="regio" id="regio" onkeypress="hitungRegio()"/>
+                <div class="controls" id="inputRegio">
+                  <input type="number" min="0" class="span1" value="<?= $jmlRegio ?>" name="regio" id="regio"/>
+				  <input type="hidden" name="totalRegio" id="totalRegio"/>
                 </div>
-              </div>
-			  <script type="text/javascript">
-				function hitungRegio(){
-					var x = document.getElementById("regio").value;
-					alert(x);
-				}
-			  </script>
-			  <?php
-				$bayarRegio = $jmlRegio * 25000;
-				if($row->id_jenis_pasien == 1){
-					$jenisBayar = 200000 + $bayarRegio;
-				}else if($row->id_jenis_pasien == 2){
-					$jenisBayar = 250000 + $bayarRegio;
-				}
-			  ?>
+              </div>			  
               <div class="control-group">
                 <label class="control-label">Total Pembayaran :</label>
                 <div class="controls">
-                  <input type="number" class="span8" value="<?= $jenisBayar ?>" name="total_bayar" id="total_bayar"/>
+                  <input type="number" class="span8" value="<?= $jumlahTarif ?>" name="total_bayar" id="total_bayar"/>
                 </div>
               </div>
               <div class="control-group">
@@ -121,7 +123,6 @@
                   <select class="span2" name="metode_pembayaran">
                     <option value="1">Cash</option>
                     <option value="2">Debet</option>
-                    <option value="3">Transfer</option>
                   </select>
                 </div>
               </div>
@@ -146,34 +147,40 @@
 <!--end-main-container-part-->
 
 <!--Footer-part-->
-
+<!-- jquery core -->
+<script src="<?php echo base_url() ?>js/jquery.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script src="<?php echo base_url() ?>js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function () {
+    $('#combox select').change(function () {
+        var selProv = $(this).val();
+        console.log(selProv);  //menampilan pada log browser apa yang dibawa pada saat dipilih pada combo box
+        $.ajax({
+            url: "<?php echo base_url('index.php/Pegawai/getTarif') ?>",       //memanggil function controller dari url
+            async: false,
+            type: "POST",     //jenis method yang dibawa ke function
+            data: "jenis_pembayaran="+selProv,   //data yang akan dibawa di url
+            dataType: "html",
+            success: function(data) {
+				document.getElementById('totalAwal').value = data;
+				document.getElementById('total_bayar').value = data;
+                //$('#total_bayar').html(data);   //hasil ditampilkan pada combobox id=kota
+            }
+        })
+    });
+	$('#inputRegio input').change(function (){
+		var jml = $(this).val();		
+		var total = jml * 25000;		
+		document.getElementById('totalRegio').value = parseInt(total);
+		var totalAwal = parseInt(document.getElementById('totalAwal').value);
+		var totalAkhir = totalAwal + total;
+		document.getElementById('total_bayar').value = parseInt(totalAkhir);
+	});
+ });
+</script>
 
 
 <!--end-Footer-part-->
-
-<script type="text/javascript">
-  // This function is called from the pop-up menus to transfer to
-  // a different page. Ignore if the value returned is a null string:
-  function goPage (newURL) {
-
-      // if url is empty, skip the menu dividers and reset the menu selection to default
-      if (newURL != "") {
-
-          // if url is "-", it is this page -- reset the menu:
-          if (newURL == "-" ) {
-              resetMenu();
-          }
-          // else, send page to designated URL
-          else {
-            document.location.href = newURL;
-          }
-      }
-  }
-
-// resets the menu selection upon entry to this page:
-function resetMenu() {
-   document.gomenu.selector.selectedIndex = 2;
-}
-</script>
 </body>
 </html>
