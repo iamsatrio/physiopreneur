@@ -58,7 +58,6 @@ class Manager extends CI_Controller {
 	//menampilkan halaman tambah pegawai
 	function viewTambahPegawai(){
 		$this->load->helper('url');
-		$idLokasi = $this->session->userdata("lokasi_id");
 		$randomNumb = rand(10,100);
 		$timeNow = substr(time(),7);
 		$generateID = "BDO-" . $randomNumb . $timeNow;
