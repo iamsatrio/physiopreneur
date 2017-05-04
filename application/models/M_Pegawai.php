@@ -25,7 +25,7 @@ class M_Pegawai extends CI_Model{
 
 	function tampil_pegawai(){
 		$this->db->from('tb_pegawai');
-    $this->db->join('tb_lokasi','tb_pegawai.id_lokasi = tb_lokasi.id');
+		$this->db->join('tb_lokasi','tb_pegawai.id_lokasi = tb_lokasi.id');
 		$this->db->join('tb_user','tb_pegawai.id_user = tb_user.id');
 		$this->db->where('tb_user.id_role',2);
 		return $this->db->get();
@@ -56,10 +56,11 @@ class M_Pegawai extends CI_Model{
 		}
 	}
 
-	function getPegawai($idPegawai){
+	function getPegawai($nik){
 		$this->db->select("*");
 		$this->db->from("tb_pegawai");
-		$this->db->where("id", $idPegawai); //select sesuai dengan ID pegawai
+		$this->db->join("tb_lokasi","tb_pegawai.id_lokasi=tb_lokasi.id");
+		$this->db->where("nik", $nik); //select sesuai dengan ID pegawai
 		return $this->db->get();
 	}
 
@@ -93,6 +94,17 @@ class M_Pegawai extends CI_Model{
 		$this->db->where("b.id_pegawai",$idPegawai);
 		$this->db->group_by("b.id_pasien");
 		return $this->db->get();
+	}
+	
+	//update profile pegawai
+	function updateAkunPegawai($data, $condition){
+		$this->db->where($condition);
+		$this->db->update("tb_user", $data);
+	}
+	
+	function update_pegawai($data, $condition){
+		$this->db->where($condition);
+		$this->db->update("tb_pegawai", $data);
 	}
 
 }

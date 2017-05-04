@@ -57,13 +57,13 @@
               <div class="control-group">
                 <label class="control-label">Lokasi</label>
                 <div class="controls">
-                  <input type="number" class="span11" placeholder="No Handphone" name="noHP" required value="<?=$data->id_lokasi?>"/>
+                  <input type="text" class="span11" name="namaLokasi" required value="<?=$data->lokasi?>, <?=$data->kota?>"/>
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label">Foto</label>
                 <div class="controls">
-                  <img src="<?php echo base_url() ?>asset/foto_pasien/<?=$data->foto?>" alt="<?=$data->foto?>" style="width:100px; height:100px;"/>
+                  <img src="<?php echo base_url() ?>asset/foto_pegawai/<?=$data->foto?>" alt="<?=$data->foto?>" style="width:100px; height:100px;"/>
                 </div>
               </div>
             </form>
