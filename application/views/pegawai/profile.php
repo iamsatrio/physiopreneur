@@ -24,7 +24,7 @@
     <div class="row-fluid">
       <div class="span12">
         <?php foreach ($profilePegawai->result() as $data){ ?>
-        <form action="#" method="post" class="form-horizontal">
+        <form action="<?php echo base_url('index.php/pegawai/actionUpdateProfile') ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
             <h5>Informasi Akun</h5>
@@ -62,13 +62,13 @@
               <div class="control-group">
                 <label class="control-label">NIK</label>
                 <div class="controls">
-                  <input type="text" disabled="" name="nik" value="<?=$data->nik?>"/>
+                  <input type="text" readonly name="nik" value="<?=$data->nik?>"/>
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label">Nama</label>
                 <div class="controls">
-                  <input type="text" class="span8" placeholder="Nama Lengkap" name="namaPasien" required value="<?=$data->nama?>"/>
+                  <input type="text" class="span8" placeholder="Nama Lengkap" name="namaPegawai" required value="<?=$data->nama?>"/>
                 </div>
               </div>
               <div class="control-group">
@@ -103,9 +103,9 @@
 
               <div class="control-group">
                 <label class="control-label">Foto</label>
-<img src="<?php echo base_url() ?>asset/foto_pasien/<?=$data->foto?>" alt="<?=$data->foto?>" style="width:100px; height:100px;"/>
                 <div class="controls">
-
+					<img src="<?php echo base_url() ?>asset/foto_pegawai/<?=$data->foto?>" alt="<?=$data->foto?>" style="width:100px; height:100px;"/>
+					<br>
                   <input type="file" name="fotoPegawai"/>
                 </div>
               </div>

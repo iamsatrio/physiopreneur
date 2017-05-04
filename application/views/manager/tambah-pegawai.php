@@ -27,7 +27,7 @@
 
     <div class="row-fluid">
       <div class="span12">
-        <form action="<?php echo base_url('index.php/manager/actionTambahPegawai') ?>" method="post" class="form-horizontal">
+        <form action="<?php echo base_url('index.php/manager/actionTambahPegawai') ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
             <h5>Informasi Akun</h5>
@@ -65,13 +65,13 @@
               <div class="control-group">
                 <label class="control-label">NIK</label>
                 <div class="controls">
-                  <input type="text" disabled="" name="nik"/>
+                  <input type="text" value="<?php echo $genNikPegawai; ?>" name="nik" readonly />
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label">Nama</label>
                 <div class="controls">
-                  <input type="text" class="span8" placeholder="Nama Lengkap" name="namaPasien" required />
+                  <input type="text" class="span8" placeholder="Nama Lengkap" name="namaPegawai" required />
                 </div>
               </div>
               <div class="control-group">
@@ -92,8 +92,11 @@
                 <div class="controls">
                   <select name="idLokasi" required>
                       <option value="#">---Pilih---</option>
-      					      <option value="1">Bandung</option>
-                      <option value="2">Jakarta</option>
+					  <?php 
+					  foreach ($dataLokasi->result() as $row){
+					  ?>
+					  <option value="<?= $row->id ?>"><?= $row->lokasi ?></option>
+					  <?php } ?>
                  </select>
                 </div>
               </div>
@@ -101,11 +104,11 @@
               <div class="control-group">
                 <label class="control-label">Foto</label>
                 <div class="controls">
-                  <input type="file" class="span11" name="fotoPegawai"/>
+                  <input type="file" class="span11" name="fotoPegawai" required />
                 </div>
               </div>
               <div class="form-actions">
-                <button class="btn btn-success">Simpan</button>
+                <input type="submit" class="btn btn-success" value="Simpan"/>
               </div>
 
           </div>

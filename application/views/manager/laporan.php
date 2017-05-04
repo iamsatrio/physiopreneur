@@ -51,10 +51,23 @@
                     <th>Tanggal</th>
                     <th>Cabang</th>
                     <th>Penghasilan</th>
-                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
+				<?php 
+					if($dataLaporanPerMinggu != null){
+						$no = 1;
+						foreach ($dataLaporanPerMinggu->result() as $row){
+				?>
+				<tr>
+					<td><?= $no++  ?></td>
+					<td><?= $row->tanggal ?></td>
+					<td><?= $row->lokasi ?></td>
+					<td><?= $row->total  ?></td>
+				</tr>
+				<?php
+					} }
+				?>
                 </tbody>
           </table>
         </div>
@@ -77,13 +90,26 @@
                 <thead>
                   <tr>
                     <th>No.</th>
-                    <th>Tanggal</th>
+                    <th>Bulan ke-</th>
                     <th>Cabang</th>
                     <th>Penghasilan</th>
-                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
+				<?php 
+					if($dataLaporanPerBulan != null){
+						$no = 1;
+						foreach ($dataLaporanPerBulan->result() as $row){
+				?>
+				<tr>
+					<td><?= $no++  ?></td>
+					<td><?= $row->bulan ?></td>
+					<td><?= $row->lokasi ?></td>
+					<td><?= $row->total  ?></td>
+				</tr>
+				<?php
+					} }
+				?>
                 </tbody>
           </table>
         </div>
@@ -105,13 +131,26 @@
                 <thead>
                   <tr>
                     <th>No.</th>
-                    <th>Tanggal</th>
+                    <th>Tahun</th>
                     <th>Cabang</th>
                     <th>Penghasilan</th>
-                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
+				<?php 
+					if($dataLaporanPerTahun != null){
+						$no = 1;
+						foreach ($dataLaporanPerTahun->result() as $row){
+				?>
+				<tr>
+					<td><?= $no++  ?></td>
+					<td><?= $row->tahun ?></td>
+					<td><?= $row->lokasi ?></td>
+					<td><?= $row->total  ?></td>
+				</tr>
+				<?php
+					} }
+				?>
                 </tbody>
           </table>
         </div>

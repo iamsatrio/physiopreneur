@@ -26,6 +26,7 @@ class Manager extends CI_Controller {
 			redirect(base_url());
 		}
 		$this->load->model('m_pegawai');
+		$this->load->model('m_manager');
 	}
 
 	public function index()
@@ -37,7 +38,14 @@ class Manager extends CI_Controller {
 	//menampilkan halaman laporan
 	function viewLaporan(){
 		$this->load->helper('url');
-		$this->load->view('manager/laporan.php');
+		$dataLaporanPerMinggu = $this->m_manager->showLaporanManagerPerMinggu();
+		$dataLaporanPerBulan = $this->m_manager->showLaporanManagerPerBulan();
+		$dataLaporanPerTahun = $this->m_manager->showLaporanManagerPerTahun();		
+		$this->load->view('manager/laporan.php', array(
+			'dataLaporanPerMinggu' => $dataLaporanPerMinggu,
+			'dataLaporanPerBulan' => $dataLaporanPerBulan,
+			'dataLaporanPerTahun' =>$dataLaporanPerTahun
+		));
 	}
 
 	//menampilkan halaman data pegawai
@@ -50,54 +58,79 @@ class Manager extends CI_Controller {
 	//menampilkan halaman tambah pegawai
 	function viewTambahPegawai(){
 		$this->load->helper('url');
-		$this->load->view('manager/tambah-pegawai.php');
+		$idLokasi = $this->session->userdata("lokasi_id");
+		$randomNumb = rand(10,100);
+		$timeNow = substr(time(),7);
+		$generateID = "BDO-" . $randomNumb . $timeNow;
+		$dataLokasi = $this->m_manager->getLokasi();
+		$this->load->view('manager/tambah-pegawai.php',array(
+			'dataLokasi' => $dataLokasi,
+			'genNikPegawai' => $generateID
+		));
 	}
 
 	// action tambah pegawai
 	public function actionTambahPegawai(){
 		$this->load->library('upload');
-		$idPegawai = $this->input->post('id');
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
+		$confPassword = $this->input->post('confirm_password');
 		$nik = $this->input->post('nik');
 		$namaPegawai = $this->input->post('namaPegawai');
-		$noHpPegawai = $this->input->post('noHp');
+		$noHpPegawai = $this->input->post('noHP');
 		$alamat = $this->input->post('alamat');
-		$idLokasiPeg = $this->input->post('lokasiPeg');
-		$namaFile = $namaPasien+$noHP;
-		$config['upload_path'] = './asset/foto_pasien/';
+		$idLokasiPeg = $this->input->post('idLokasi');
+		$namaFile = $namaPegawai.$noHpPegawai;
+		$config['upload_path'] = './asset/foto_pegawai/';
 		$config['allowed_types'] = 'jpg|png|jpeg';
 		$config['max_size'] = '2048'; //maksimum besar file 2M
         $config['max_width']  = '1288'; //lebar maksimum 1288 px
         $config['max_height']  = '1288'; //tinggi maksimu 1288 px
         $config['file_name'] = $namaFile; //nama yang terupload nantinya
-		$idUserPeg = $this->input->post('idUserPeg');
-
-
-		$this->upload->initialize($config);
-
-		if($this->upload->do_upload('fotoPegawai')){
-			$gbr = $this->upload->data();
-			$data = array(
-				'id' => $idPegawai,
-				'nik' => $nik,
-				'nama' => $namaPegawai,
-				'no_hp' => $noHP,
-				'alamat' => $alamat,
-				'id_lokasi' => $idLokasiPeg,
-				'foto' => $gbr['file_name']
+		
+		if($password == $confPassword){
+			$dataAkun = array(
+				'username' => $username,
+				'password' => $password,
+				'id_role' => 2
 			);
-			$this->m_pegawai->tambah_pegawai($data,'tb_pegawai');
-			redirect(base_url('index.php/tambahpasien/rekam_medik'), 'refresh');
+			$this->m_manager->tambahAkunPegawai($dataAkun,'tb_user');
+			
+			$idUserPeg = $this->m_manager->getMaxIdUser();
+		
+			$this->upload->initialize($config);
+
+			if($this->upload->do_upload('fotoPegawai')){
+				$gbr = $this->upload->data();
+				$data = array(
+					'nik' => $nik,
+					'nama' => $namaPegawai,
+					'no_hp' => $noHpPegawai,
+					'alamat' => $alamat,
+					'id_lokasi' => $idLokasiPeg,
+					'foto' => $gbr['file_name'],
+					'id_user' => $idUserPeg
+				);
+				$this->m_pegawai->tambah_pegawai($data,'tb_pegawai');
+				redirect(base_url('index.php/manager/viewDataPegawai'), 'refresh');
+			}else{
+				//echo "<script type='text/javascript'>alert('Upload Failed!!');</script>";
+				//redirect(base_url('index.php/tambahpasien'), 'refresh');
+				$error = array('error' => $this->upload->display_errors());
+				echo $error['error'];
+			}
 		}else{
-			//echo "<script type='text/javascript'>alert('Upload Failed!!');</script>";
-			//redirect(base_url('index.php/tambahpasien'), 'refresh');
-			$error = array('error' => $this->upload->display_errors());
-			echo $error['error'];
+			$message = "Password tidak sesuai. Check Again!!";
+			echo "<script type='text/javascript'>alert('$message');</script>";
+			redirect(base_url('index.php/manager/viewTambahPegawai'),'refresh');
 		}
+		
+		
 	}
 
 	//menampilkan halaman detail pegawai
-	function viewDetailPegawai($id){
-		$dataPegawai = $this->m_pegawai->getPegawai($id);
+	function viewDetailPegawai($nik){
+		$dataPegawai = $this->m_pegawai->getPegawai($nik);
 		 $this->load->view('manager/detail-pegawai.php', array(
 			 'dataPegawai' => $dataPegawai
 		 ));
@@ -105,7 +138,67 @@ class Manager extends CI_Controller {
 
 	//action update pegawai
 	function actionUpdatePegawai(){
+		
+	}
+	
+	//action update profile Manager
+	function actionUpdateProfile(){
+		$this->load->library('upload');
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
+		$confPassword = $this->input->post('confirm_password');
+		$nik = $this->input->post('nik');
+		$namaPegawai = $this->input->post('namaPegawai');
+		$noHpPegawai = $this->input->post('noHP');
+		$alamat = $this->input->post('alamat');
+		$idLokasiPeg = $this->input->post('idLokasi');
+		$namaFile = $namaPegawai.$noHpPegawai;
+		$config['upload_path'] = './asset/foto_manager/';
+		$config['allowed_types'] = 'jpg|png|jpeg';
+		$config['max_size'] = '2048'; //maksimum besar file 2M
+        $config['max_width']  = '1288'; //lebar maksimum 1288 px
+        $config['max_height']  = '1288'; //tinggi maksimu 1288 px
+        $config['file_name'] = $namaFile; //nama yang terupload nantinya
+		
+		if($password == $confPassword){
+			$dataAkun = array(
+				'username' => $username,
+				'password' => $password
+			);
+			$condition['id'] = $this->session->userdata('id');
+			$this->m_manager->updateAkunPegawai($dataAkun,$condition);
+						
+			$this->upload->initialize($config);
 
+			if($this->upload->do_upload('fotoPegawai')){
+				$gbr = $this->upload->data();
+				$data = array(
+					'nik' => $nik,
+					'nama' => $namaPegawai,
+					'no_hp' => $noHpPegawai,
+					'alamat' => $alamat,
+					'id_lokasi' => $idLokasiPeg,
+					'foto' => $gbr['file_name']
+				);
+				$this->m_manager->update_pegawai($data,$condition);
+				redirect(base_url('index.php/manager'), 'refresh');
+			}else{
+				$data = array(
+					'nik' => $nik,
+					'nama' => $namaPegawai,
+					'no_hp' => $noHpPegawai,
+					'alamat' => $alamat,
+					'id_lokasi' => $idLokasiPeg
+				);
+				$this->m_manager->update_pegawai($data,$condition);
+				redirect(base_url('index.php/manager'), 'refresh');				
+			}
+		}else{
+			$message = "Password tidak sesuai. Check Again!!";
+			echo "<script type='text/javascript'>alert('$message');</script>";
+			$user = $this->session->userdata('username');
+			redirect(base_url('index.php/manager/viewProfileManager/'.$user),'refresh');
+		}
 	}
 
 	//menampilkan halaman profile pegawai
@@ -118,5 +211,19 @@ class Manager extends CI_Controller {
 
 		 ));
 	}
-
+	
+	//search pegawai
+	public function viewPegawaiById(){
+		$searchNIK = $this->input->post('nik');
+		$dataPegawai = $this->m_pegawai->getPegawai($searchNIK);
+		if($dataPegawai->num_rows() > 0){
+			$this->load->view('manager/detail-pegawai.php', array(
+				'dataPegawai' => $dataPegawai
+			));
+		}else{
+			$message = "Pegawai dengan NIK ".$searchNIK." tidak ditemukan";
+			echo "<script type='text/javascript'>alert('$message');</script>";
+			redirect(base_url('index.php/manager/'),'refresh');
+		}		
+	}
 }

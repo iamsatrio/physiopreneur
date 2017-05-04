@@ -56,7 +56,7 @@
          </div>
 		<form action="<?php echo base_url('index.php/Manager/viewPegawaiById') ?>" method="post">
          <div class = "modal-body">
-            <center><input type="text" name="kd_pasien" placeholder="NIK" required /></center>
+            <center><input type="text" name="nik" placeholder="NIK" required /></center>
          </div>
 
          <div class = "modal-footer">

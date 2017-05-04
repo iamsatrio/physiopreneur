@@ -331,4 +331,63 @@ class Pegawai extends CI_Controller {
 		//$this->load->view('pegawai/laporan.php');
 	}
 
+	//action update profile Pegawai
+	function actionUpdateProfile(){
+		$this->load->library('upload');
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
+		$confPassword = $this->input->post('confirm_password');
+		$nik = $this->input->post('nik');
+		$namaPegawai = $this->input->post('namaPegawai');
+		$noHpPegawai = $this->input->post('noHP');
+		$alamat = $this->input->post('alamat');
+		$idLokasiPeg = $this->input->post('idLokasi');
+		$namaFile = $namaPegawai.$noHpPegawai;
+		$config['upload_path'] = './asset/foto_pegawai/';
+		$config['allowed_types'] = 'jpg|png|jpeg';
+		$config['max_size'] = '2048'; //maksimum besar file 2M
+        $config['max_width']  = '1288'; //lebar maksimum 1288 px
+        $config['max_height']  = '1288'; //tinggi maksimu 1288 px
+        $config['file_name'] = $namaFile; //nama yang terupload nantinya
+		
+		if($password == $confPassword){
+			$dataAkun = array(
+				'username' => $username,
+				'password' => $password
+			);
+			$condition['id'] = $this->session->userdata('id');
+			$this->m_pegawai->updateAkunPegawai($dataAkun,$condition);
+						
+			$this->upload->initialize($config);
+
+			if($this->upload->do_upload('fotoPegawai')){
+				$gbr = $this->upload->data();
+				$data = array(
+					'nik' => $nik,
+					'nama' => $namaPegawai,
+					'no_hp' => $noHpPegawai,
+					'alamat' => $alamat,
+					'id_lokasi' => $idLokasiPeg,
+					'foto' => $gbr['file_name']
+				);
+				$this->m_pegawai->update_pegawai($data,$condition);
+				redirect(base_url('index.php/pegawai'), 'refresh');
+			}else{
+				$data = array(
+					'nik' => $nik,
+					'nama' => $namaPegawai,
+					'no_hp' => $noHpPegawai,
+					'alamat' => $alamat,
+					'id_lokasi' => $idLokasiPeg
+				);
+				$this->m_pegawai->update_pegawai($data,$condition);
+				redirect(base_url('index.php/pegawai'), 'refresh');				
+			}
+		}else{
+			$message = "Password tidak sesuai. Check Again!!";
+			echo "<script type='text/javascript'>alert('$message');</script>";
+			$user = $this->session->userdata('username');
+			redirect(base_url('index.php/pegawai/viewProfilePegawai/'.$user),'refresh');
+		}
+	}
 }
