@@ -76,6 +76,24 @@ class M_Pegawai extends CI_Model{
 		return $this->db->get();
 
 	}
+	
+	//laporan pegawai
+	function showLaporanKeuangan($idPegawai){
+		$this->db->select("tanggal, SUM(total) as total");
+		$this->db->from("tb_pembayaran");
+		$this->db->where("id_pegawai",$idPegawai);
+		$this->db->group_by("tanggal");
+		return $this->db->get();
+	}
+	
+	function showLaporanPasien($idPegawai){
+		$this->db->select("a.id, a.nama_pasien, a.alamat");
+		$this->db->from("tb_pasien a");
+		$this->db->join("tb_rekam_medik b","a.id = b.id_pasien");
+		$this->db->where("b.id_pegawai",$idPegawai);
+		$this->db->group_by("b.id_pasien");
+		return $this->db->get();
+	}
 
 }
 

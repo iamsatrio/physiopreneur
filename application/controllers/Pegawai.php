@@ -320,10 +320,15 @@ class Pegawai extends CI_Controller {
 
 	//menampilkan halaman laporan
 	function viewLaporan(){
-			$this->load->helper('url');
-			$this->load->view('pegawai/laporan.php');
+		$this->load->helper('url');
+		$idPegawai = $this->session->userdata("id");
+		$dataLaporanKeuangan = $this->m_pegawai->showLaporanKeuangan($idPegawai);
+		$dataLaporanPasien = $this->m_pegawai->showLaporanPasien($idPegawai);
+		$this->load->view('pegawai/laporan.php', array(
+			'dataLaporanKeuangan' => $dataLaporanKeuangan,
+			'dataLaporanPasien' => $dataLaporanPasien
+		));
+		//$this->load->view('pegawai/laporan.php');
 	}
-
-
 
 }
