@@ -25,6 +25,10 @@ class M_Tarif extends CI_Model{
   		$this->db->from("tb_jenis_pembayaran");
   		return $this->db->get();
   	}
+	
+	function tambahTarif($data,$table){
+		$this->db->insert($table,$data);
+	}
 
 }
 ?>

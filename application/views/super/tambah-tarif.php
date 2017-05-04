@@ -23,7 +23,7 @@
 
     <div class="row-fluid">
       <div class="span12">
-        <form action="#" method="post" class="form-horizontal">
+        <form action="<?php echo base_url('index.php/SuperAdmin/actionTambahTarif') ?>" method="post" class="form-horizontal">
         <hr>
 
         <div class="widget-box">
@@ -31,7 +31,6 @@
             <h5>Tambah Tarif</h5>
           </div>
           <div class="widget-content nopadding">
-
               <div class="control-group">
                 <label class="control-label">Lokasi</label>
                 <div class="controls">
@@ -48,7 +47,7 @@
               <div class="control-group">
                 <label class="control-label">Jenis Pembayaran</label>
                     <div class="controls">
-                      <select name="idLokasi" required>
+                      <select name="idJenisPembayaran" required>
                         <option value="#">---Pilih---</option>
                         <?php foreach ($pembayaranAll->result() as $loc){ ?>
                           <option value="<?=$loc->id?>"><?=$loc->jenis_pembayaran?></option>
@@ -61,7 +60,7 @@
               <div class="control-group">
                 <label class="control-label">Tarif</label>
                 <div class="controls">
-                  <input type="number" name="number" id="number" />
+                  <input type="number" name="number" id="number" required />
                 </div>
               </div>
 

@@ -39,7 +39,7 @@
               <div class="control-group">
                 <label class="control-label">Name :</label>
                 <div class="controls">
-                  <input type="text" class="span11" placeholder="Nama Lengkap" name="namaPasien" required value="<?=$data->nama_manager?>"/>
+                  <input type="text" class="span11" placeholder="Nama Lengkap" name="namaPasien" required value="<?=$data->nama?>"/>
                 </div>
               </div>
               <div class="control-group">
@@ -57,13 +57,13 @@
               <div class="control-group">
                 <label class="control-label">Username :</label>
                 <div class="controls">
-                  <input type="number" class="span11" placeholder="No Handphone" name="noHP" required value="<?=$data->id_user?>"/>
+                  <input type="text" class="span11" name="username" required value="<?=$data->username?>"/>
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label">Foto :</label>
                 <div class="controls">
-                  <img src="<?php echo base_url() ?>asset/foto_pasien/<?=$data->foto?>" alt="<?=$data->foto?>" style="width:100px; height:100px;"/>
+                  <img src="<?php echo base_url() ?>asset/foto_manager/<?=$data->foto?>" alt="<?=$data->foto?>" style="width:100px; height:100px;"/>
                 </div>
               </div>
               <!-- <div class="form-actions">

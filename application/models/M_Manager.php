@@ -101,6 +101,15 @@ class M_Manager extends CI_Model{
 		$this->db->where($condition);
 		$this->db->update("tb_pegawai", $data);
 	}
+	
+	//search manager
+	function getManager($nik){
+		$this->db->select("*");
+		$this->db->from("tb_pegawai");
+		$this->db->join("tb_user","tb_pegawai.id_user=tb_user.id");
+		$this->db->where("nik", $nik); //select sesuai dengan ID pegawai
+		return $this->db->get();
+	}
 }
 
 ?>

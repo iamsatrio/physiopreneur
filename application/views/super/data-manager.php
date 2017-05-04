@@ -72,7 +72,7 @@
                   <td>
                     <center>
                       <!--akan masuk ke rekam medik-->
-                      <a href="<?php echo base_url() ?>index.php/SuperAdmin/tampilDetailManager/<?= $row->id?>">
+                      <a href="<?php echo base_url() ?>index.php/SuperAdmin/tampilDetailManager/<?= $row->nik?>">
                         <button class="btn btn-primary"><i class="icon icon-search"></i> Details</button>
                       </a>
                     </center>

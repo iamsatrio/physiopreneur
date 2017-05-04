@@ -1,15 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Tambah Manager - Physiopreneur</title>
+<title>Profile Manager - Physiopreneur</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="<?php echo base_url()?>css/bootstrap.min.css" />
-<link rel="stylesheet" href="<?php echo base_url()?>css/bootstrap-responsive.min.css" />
-<link rel="stylesheet" href="<?php echo base_url()?>css/matrix-style.css" />
-<link rel="stylesheet" href="<?php echo base_url()?>css/matrix-media.css" />
-<link href="<?php echo base_url()?>font-awesome/css/font-awesome.css" rel="stylesheet" />
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
 </head>
 <body>
 
@@ -17,17 +12,19 @@
 <?php include 'header.php';?>
 
 <?php include 'navbar.php';?>
-<!--sidebar-menu-->
+
+<!--main-container-part-->
 <div id="content">
   <div id="content-header">
     <div id="breadcrumb"> <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#" class="current">Pendaftaran Pasien</a> </div>
-    <h1>Pendaftaran Manager</h1>
+    <h1>My Profile</h1>
   </div>
   <div class="container-fluid">
 
     <div class="row-fluid">
       <div class="span12">
-        <form action="<?php echo base_url('index.php/SuperAdmin/actionTambahManager') ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
+        <?php foreach ($profilePegawai->result() as $data){ ?>
+        <form action="<?php echo base_url('index.php/SuperAdmin/actionUpdateProfile') ?>" method="post" class="form-horizontal" enctype="multipart/form-data">
         <div class="widget-box">
           <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
             <h5>Informasi Akun</h5>
@@ -36,19 +33,19 @@
               <div class="control-group">
                 <label class="control-label">Username</label>
                 <div class="controls">
-                  <input type="text" placeholder="Username" name="username" required />
+                  <input type="text" placeholder="Username" name="username" required value="<?=$data->username?>"/>
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label">Password</label>
                 <div class="controls">
-                  <input type="password" name="password" id="pwd" placeholder="Password"/>
+                  <input type="password" name="password" id="pwd" value="<?=$data->password?>"/>
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">Confirm Password</label>
+                <label class="control-label">Confirm password</label>
                 <div class="controls">
-                  <input type="password" name="confirm_password" id="pwd2" placeholder="Confirm Password" />
+                  <input type="password" name="confirm_password" id="pwd2" value="<?=$data->password?>"/>
                 </div>
               </div>
           </div>
@@ -61,41 +58,45 @@
             <h5>Data Diri Manager</h5>
           </div>
           <div class="widget-content nopadding">
+
               <div class="control-group">
                 <label class="control-label">NIK</label>
                 <div class="controls">
-                  <input type="text" readonly value="<?php echo $genNikPegawai; ?>" name="nik"/>
+                  <input type="text" readonly name="nik" value="<?=$data->nik?>"/>
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label">Nama</label>
                 <div class="controls">
-                  <input type="text" class="span7" placeholder="Nama Lengkap" name="namaManager" required />
+                  <input type="text" class="span8" placeholder="Nama Lengkap" name="namaPegawai" required value="<?=$data->nama?>"/>
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label">Nomor HP</label>
+                <label class="control-label"> Nomor HP</label>
                 <div class="controls">
-                  <input type="phone" name="noHP" required placeholder="Handphone"/>
+                  <input type="phone" name="noHP" required value="<?=$data->no_hp?>"/>
                 </div>
               </div>
               <div class="control-group">
                 <label class="control-label">Alamat</label>
                 <div class="controls">
-                  <textarea class="span7" name="alamat" required placeholder="Alamat Lengkap"></textarea>
+                  <textarea class="span8" name="alamat" required><?=$data->alamat?></textarea>
                 </div>
               </div>
-			  
-			  <div class="control-group">
+
+              <div class="control-group">
                 <label class="control-label">Lokasi</label>
                 <div class="controls">
                   <select name="idLokasi" required>
-                      <option value="#">---Pilih---</option>
-					  <?php 
-					  foreach ($dataLokasi->result() as $row){
-					  ?>
-					  <option value="<?= $row->id ?>"><?= $row->lokasi ?></option>
-					  <?php } ?>
+                    <option value="#">---Pilih---</option>
+                    <?php foreach ($lokasiAll->result() as $loc){ ?>
+                      <?php if ($loc->id == $data->id_lokasi) {?>
+                        <option value="<?=$loc->id?>" selected=""><?=$loc->lokasi?></option>
+                      <?php
+                          }else {
+                      echo "<option value='$loc->id'>$loc->lokasi</option>";
+                          }
+                      } ?>
                  </select>
                 </div>
               </div>
@@ -103,16 +104,19 @@
               <div class="control-group">
                 <label class="control-label">Foto</label>
                 <div class="controls">
-                  <input type="file" name="fotoManager" required />
+					<img src="<?php echo base_url() ?>asset/foto_pegawai/<?=$data->foto?>" alt="<?=$data->foto?>" style="width:100px; height:100px;"/>
+					<br>
+                  <input type="file" name="fotoPegawai"/>
                 </div>
               </div>
               <div class="form-actions">
-                <button class="btn btn-success">Simpan</button>
+                <input type="submit" class="btn btn-success" value="Simpan"/>
               </div>
 
           </div>
         </div>
         </form>
+        <?php } ?>
       </div>
     </div>
   </div>
@@ -125,13 +129,5 @@
   <div id="footer" class="span12"> 2013 &copy; Matrix Admin. Brought to you by <a href="http://themedesigner.in">Themedesigner.in</a> </div>
 </div>
 <!--End-Footer-part-->
-<!-- JS part -->
-<script src="<?php echo base_url()?>js/jquery.min.js"></script>
-<script src="<?php echo base_url()?>js/jquery.ui.custom.js"></script>
-<script src="<?php echo base_url()?>js/bootstrap.min.js"></script>
-<script src="<?php echo base_url()?>js/jquery.peity.min.js"></script>
-<script src="<?php echo base_url()?>js/matrix.js"></script>
-<script src="<?php echo base_url()?>js/matrix.interface.js"></script>
-<script src="<?php echo base_url()?>js/matrix.popover.js"></script>
 </body>
 </html>
