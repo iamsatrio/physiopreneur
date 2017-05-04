@@ -52,6 +52,19 @@
                   </tr>
                 </thead>
                 <tbody>
+				<?php 
+					if($dataLaporanKeuangan != null){
+						$no = 1;
+						foreach ($dataLaporanKeuangan->result() as $row){
+				?>
+				<tr>
+					<td><?= $no++  ?></td>
+					<td><?= $row->tanggal  ?></td>
+					<td><?= $row->total  ?></td>
+				</tr>
+				<?php
+					} }
+				?>
                 </tbody>
           </table>
         </div>
@@ -59,7 +72,6 @@
     </div>
   </div>
   </div>
-
 
   <div class="container-fluid" id="pasien" style="display:none;">
       <hr>
@@ -80,6 +92,27 @@
                   </tr>
                 </thead>
                 <tbody>
+				<?php 
+					if($dataLaporanPasien != null){
+						$no = 1;
+						foreach ($dataLaporanPasien->result() as $row){
+				?>
+				<tr>
+					<td><?= $no++  ?></td>
+					<td><?= $row->nama_pasien  ?></td>
+					<td><?= $row->alamat  ?></td>
+					<td>
+						<center>
+                        <!--akan masuk ke rekam medik-->
+                        <a href="<?php echo base_url() ?>index.php/pegawai/viewRekamMedik/<?= $row->id?>">
+                          <button class="btn btn-primary"><i class="icon icon-search"></i> Details</button>
+                        </a>
+                      </center>
+					</td>
+				</tr>
+				<?php
+					} }
+				?>
                 </tbody>
           </table>
         </div>
